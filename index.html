@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#9c2f1f">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Gia phả">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Gia phả dòng họ</title>
+<style>
+:root{--bg:#faf6ef;--card:#fff;--tx:#2b2118;--mu:#7a6a5a;--ac:#9c2f1f;--ac2:#c99a3b;--bd:#e6dccb;--nam:#3b6ea5;--nu:#b5527a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1814;--card:#2a231d;--tx:#f1e8dc;--mu:#a89a89;--ac:#e0705c;--ac2:#d8ad55;--bd:#403528;--nam:#6ea2dc;--nu:#e083ab;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1d1814;--card:#2a231d;--tx:#f1e8dc;--mu:#a89a89;--ac:#e0705c;--ac2:#d8ad55;--bd:#403528;--nam:#6ea2dc;--nu:#e083ab;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:90px}
+header{padding:16px 16px 8px}
+h1{margin:0;font-size:22px;color:var(--ac)}
+.sub{color:var(--mu);font-size:13px;margin-top:2px}
+main{padding:8px 12px;max-width:720px;margin:0 auto}
+.tab{display:none}.tab.on{display:block}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--bd);padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+nav button{flex:1;border:0;background:none;color:var(--mu);padding:9px 2px 7px;font:inherit;font-size:12px}
+nav button b{display:block;font-size:20px;font-weight:400}
+nav button.on{color:var(--ac);font-weight:600}
+.fab{position:fixed;right:16px;bottom:calc(72px + env(safe-area-inset-bottom,0px));width:56px;height:56px;border-radius:50%;border:0;background:var(--ac);color:#fff;font-size:30px;box-shadow:0 3px 10px #0004;z-index:6}
+ul.t{list-style:none;margin:0;padding-left:14px;border-left:2px dashed var(--bd)}
+ul.t.root{padding-left:0;border:0}
+li{margin:6px 0}
+.c{background:var(--card);border:1px solid var(--bd);border-left:5px solid var(--nam);border-radius:10px;padding:8px 10px;display:block;cursor:pointer}
+.c.nu{border-left-color:var(--nu)}
+.c .n{font-weight:600}.c .m{font-size:12.5px;color:var(--mu)}
+.g{display:inline-block;font-size:11px;background:var(--ac2);color:#fff;border-radius:8px;padding:0 7px;margin-right:6px}
+details>summary{list-style:none}details>summary::-webkit-details-marker{display:none}
+.c{overflow:hidden}summary .c{position:relative;padding-right:28px}summary .c::after{content:"▾";position:absolute;right:10px;top:8px;color:var(--mu)}.av{width:44px;height:44px;border-radius:50%;background:var(--bd) center/cover no-repeat;display:inline-flex;align-items:center;justify-content:center;flex:none}.av.s{float:left;width:38px;height:38px;margin-right:8px}
+details:not([open])>summary .c::after{content:"▸"}
+input,select,textarea,button.b{font:inherit;color:var(--tx);background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:9px;width:100%}
+label{display:block;font-size:13px;color:var(--mu);margin:10px 0 3px}
+.r{display:flex;gap:6px}.r>*{flex:1}.r>.w{flex:1.6}
+button.b{width:auto;cursor:pointer;background:var(--ac);color:#fff;border:0;padding:10px 14px;margin:4px 4px 4px 0}
+button.b.s{background:var(--card);color:var(--tx);border:1px solid var(--bd)}
+button.b.d{background:#b3261e}
+.ov{position:fixed;inset:0;background:#0007;z-index:10;display:none;align-items:flex-end;justify-content:center}
+.ov.on{display:flex}
+.sh{background:var(--card);width:100%;max-width:720px;max-height:92%;overflow:auto;border-radius:16px 16px 0 0;padding:14px 16px calc(18px + env(safe-area-inset-bottom,0px))}
+.ev{display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:9px 10px;margin:6px 0}
+.ev .dt{min-width:58px;text-align:center;font-size:12px;color:var(--mu)}.ev .dt b{display:block;font-size:20px;color:var(--ac)}
+.tag{font-size:11px;border-radius:8px;padding:0 7px;color:#fff;background:var(--ac)}.tag.bd{background:var(--nam)}
+.emp{text-align:center;color:var(--mu);padding:30px 10px}
+.bn{background:var(--card);border:2px solid var(--ac2);border-radius:10px;padding:8px 12px;margin:4px 0 10px}.bi{padding:3px 0;font-size:14px;cursor:pointer}
+textarea{min-height:120px;font:12px monospace}
+.sg{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:10px 0}.sg div{background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:8px;text-align:center}.sg b{display:block;font-size:22px;color:var(--ac)}
+.tbar button.b{padding:6px 10px;font-size:13px;margin:2px 4px 2px 0}
+.hc{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:4px}.hc b{font-size:26px;color:var(--ac);font-variant-numeric:tabular-nums}
+@media print{body[data-print="t2"] #t0{display:none!important}body[data-print="t2"] #t2{display:block!important}nav,.fab,.tbar,#bfn,.bn button,#gobk{display:none!important}body{background:#fff;color:#000;padding:0}.tab{display:none!important}#t0{display:block!important}}
+</style>
+</head>
+<body>
+<header><h1 id="ttl">🌳 Gia phả dòng họ</h1><div class="hc"><b id="hct"></b><span class="sub" id="hcw"></span></div><div class="sub" id="today"></div></header>
+<main>
+ <section class="tab on" id="t0"></section>
+ <section class="tab" id="t1"><div class="r"><input id="q" placeholder="Tìm theo tên, quê quán…" class="w"><select id="qf"><option value="">Tất cả</option><option value="nam">Nam</option><option value="nu">Nữ</option><option value="alive">Còn sống</option><option value="dead">Đã mất</option></select></div><select id="qk" style="margin:6px 0"><option value="">Tìm trong: tất cả thông tin</option><option value="name">Họ tên / tên gọi khác</option><option value="home">Quê quán</option><option value="res">Nơi thường trú</option><option value="addr">Chỗ ở hiện nay</option><option value="job">Nghề nghiệp / chức vụ / học vấn</option><option value="soc">Mối quan hệ xã hội</option></select><div id="list"></div></section>
+ <section class="tab" id="t2"></section>
+ <section class="tab" id="t3"></section>
+ <section class="tab" id="t4">
+  <h3>Excel</h3>
+  <p class="sub">Xuất toàn bộ gia phả (kèm ảnh) ra file .xlsx để lưu trữ hoặc chỉnh sửa trong Excel, rồi nhập lại khi cần.</p>
+  <button class="b" id="bxl">Xuất ra file Excel</button>
+  <label>Khôi phục từ file Excel (.xlsx)</label><input type="file" id="fxl" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+  <p class="sub">Dữ liệu chỉ lưu trên máy này. Hãy xuất Excel định kỳ để không mất.</p>
+  <button class="b d" id="bclr">Xóa toàn bộ dữ liệu</button>
+  <p class="sub" id="msg"></p>
+  <h3>Công cụ</h3>
+  <button class="b s" id="bchk">🔍 Kiểm tra dữ liệu</button><button class="b s" id="bvcf">📇 Xuất danh bạ (.vcf)</button>
+  <p class="sub">Kiểm tra phát hiện thiếu sót / mâu thuẫn trong hồ sơ. Danh bạ gồm các thành viên còn sống có số điện thoại, nhập được vào Danh bạ điện thoại.</p>
+  <h3>Lịch nhắc (.ics)</h3>
+  <p class="sub">Xuất ngày giỗ và sinh nhật 12 tháng tới ra file lịch, mở bằng Google Calendar hoặc Apple Calendar để được nhắc ngay cả khi dùng bản web (nhắc 7:00 sáng; ngày giỗ nhắc thêm 18:00 chiều hôm trước).</p>
+  <button class="b" id="bics">Xuất lịch nhắc</button>
+  <h3>Bảo mật</h3>
+  <p class="sub">Đặt mã PIN để khóa app mỗi lần mở (nên bật vì hồ sơ có số CCCD). Đây là khóa che màn hình, dữ liệu không được mã hóa. Nếu quên PIN, chỉ còn cách xóa dữ liệu trình duyệt/gỡ app (sẽ mất dữ liệu), nên hãy sao lưu Excel.</p>
+  <button class="b" id="bpin">Đặt mã PIN</button><button class="b s" id="bpin0">Tắt PIN</button>
+  <h3>Giao diện</h3>
+  <select id="thm"><option value="auto">Theo thiết bị</option><option value="light">Sáng</option><option value="dark">Tối</option></select>
+  <h3>Thông báo nhắc nhở</h3>
+  <p class="sub" id="nst"></p>
+  <button class="b" id="bnot">Bật nhắc trên điện thoại</button>
+ </section>
+</main>
+<button class="fab" id="fab" aria-label="Thêm thành viên">+</button>
+<nav>
+ <button class="on" data-t="0"><b>🌳</b>Cây gia phả</button>
+ <button data-t="1"><b>👥</b>Thành viên</button>
+ <button data-t="2"><b>🔔</b>Ngày giỗ</button>
+ <button data-t="3"><b>🎂</b>Sinh nhật</button>
+ <button data-t="4"><b>💾</b>Sao lưu</button>
+</nav>
+<div id="lock" style="display:none;position:fixed;inset:0;z-index:50;background:var(--bg);align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:20px"><div style="font-size:44px">🔒</div><b>Gia phả dòng họ</b><input id="lpin" type="password" inputmode="numeric" placeholder="Nhập mã PIN" style="max-width:240px;text-align:center"><button class="b" id="lok">Mở khóa</button><div class="sub" id="lmsg"></div></div>
+<div class="ov" id="ov"><div class="sh" id="sh"></div></div>
+
+<script>
+// ---- Âm lịch (thuật toán Hồ Ngọc Đức) ----
+const PI=Math.PI,TZ=7;
+function jd(d,m,y){const a=Math.floor((14-m)/12),yy=y+4800-a,mm=m+12*a-3;return d+Math.floor((153*mm+2)/5)+365*yy+Math.floor(yy/4)-Math.floor(yy/100)+Math.floor(yy/400)-32045}
+function newMoon(k){const T=k/1236.85,T2=T*T,T3=T2*T,r=PI/180;let J=2415020.75933+29.53058868*k+0.0001178*T2-0.000000155*T3;J+=0.00033*Math.sin((166.56+132.87*T-0.009173*T2)*r);
+const M=359.2242+29.10535608*k-0.0000333*T2-0.00000347*T3,Mp=306.0253+385.81691806*k+0.0107306*T2+0.00001236*T3,F=21.2964+390.67050646*k-0.0016528*T2-0.00000239*T3;
+let C=(0.1734-0.000393*T)*Math.sin(M*r)+0.0021*Math.sin(2*r*M)-0.4068*Math.sin(Mp*r)+0.0161*Math.sin(r*2*Mp)-0.0004*Math.sin(r*3*Mp)+0.0104*Math.sin(r*2*F)-0.0051*Math.sin(r*(M+Mp))-0.0074*Math.sin(r*(M-Mp))+0.0004*Math.sin(r*(2*F+M))-0.0004*Math.sin(r*(2*F-M))-0.0006*Math.sin(r*(2*F+Mp))+0.0010*Math.sin(r*(2*F-Mp))+0.0005*Math.sin(r*(2*Mp+M));
+const dt=T<-11?0.001+0.000839*T+0.0002261*T2-0.00000845*T3-0.000000081*T*T3:-0.000278+0.000265*T+0.000262*T2;return J+C-dt}
+function sunLong(n){const T=(n-0.5-TZ/24-2451545)/36525,T2=T*T,r=PI/180,M=357.5291+35999.0503*T-0.0001559*T2-0.00000048*T*T2,L0=280.46645+36000.76983*T+0.0003032*T2;
+let DL=(1.9146-0.004817*T-0.000014*T2)*Math.sin(r*M)+(0.019993-0.000101*T)*Math.sin(r*2*M)+0.00029*Math.sin(r*3*M);let L=(L0+DL)*r;L-=PI*2*Math.floor(L/(PI*2));return Math.floor(L/PI*6)}
+const nmd=k=>Math.floor(newMoon(k)+0.5+TZ/24);
+function m11(y){const off=jd(31,12,y)-2415021,k=Math.floor(off/29.530588853);let n=nmd(k);if(sunLong(n)>=9)n=nmd(k-1);return n}
+function leapOff(a){const k=Math.floor((a-2415021.076998695)/29.530588853+0.5);let last=0,i=1,arc=sunLong(nmd(k+i));do{last=arc;i++;arc=sunLong(nmd(k+i))}while(arc!=last&&i<14);return i-1}
+function s2l(d,m,y){const dn=jd(d,m,y),k=Math.floor((dn-2415021.076998695)/29.530588853);let ms=nmd(k+1);if(ms>dn)ms=nmd(k);let a=m11(y),b=a,ly;
+if(a>=ms){ly=y;a=m11(y-1)}else{ly=y+1;b=m11(y+1)}
+const ld=dn-ms+1,diff=Math.floor((ms-a)/29);let leap=0,lm=diff+11;
+if(b-a>365){const lo=leapOff(a);if(diff>=lo){lm=diff+10;if(diff==lo)leap=1}}
+if(lm>12)lm-=12;if(lm>=11&&diff<4)ly-=1;return[ld,lm,ly,leap]}
+const CAN=["Giáp","Ất","Bính","Đinh","Mậu","Kỷ","Canh","Tân","Nhâm","Quý"],CHI=["Tý","Sửu","Dần","Mão","Thìn","Tỵ","Ngọ","Mùi","Thân","Dậu","Tuất","Hợi"];
+const canchi=y=>CAN[(y+6)%10]+" "+CHI[(y+8)%12];
+
+// ---- Dữ liệu ----
+const KEY="giapha_v1";let M=[],SOON=[],FN="",OUT=[],GIO=[],C=normC(null);
+function load(){try{M=JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){M=[]}try{FN=localStorage.getItem(KEY+"_name")||""}catch(e){}try{C=normC(JSON.parse(localStorage.getItem(KEY+"_clan")||"null"))}catch(e){C=normC(null)}}
+function normC(c){c=c&&typeof c==="object"?c:{};const I={};["origin","hall","head","history","motto"].forEach(k=>I[k]=String((c.info||{})[k]||""));
+ return{info:I,ev:(Array.isArray(c.ev)?c.ev:[]).filter(v=>v&&v.name).map(v=>({id:String(v.id||"").replace(/[^\w-]/g,"")||uid(),name:String(v.name),d:+v.d||0,m:+v.m||0,l:v.l?1:0,place:String(v.place||""),note:String(v.note||"")}))}}
+function saveClan(){try{localStorage.setItem(KEY+"_clan",JSON.stringify(C))}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(M));localStorage.setItem(KEY+"_name",FN)}catch(e){}}
+const $=s=>document.querySelector(s),esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const byId=id=>M.find(x=>x.id===id);
+const uid=()=>"m"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const fmt=dt=>!dt||!dt.d&&!dt.m&&!dt.y?"":[dt.d,dt.m,dt.y].filter(Boolean).join("/")+(dt.l?" (ÂL)":"");
+
+// ---- Cây gia phả ----
+function isRoot(p){if(p.parentId&&byId(p.parentId))return false;const s=byId(p.spouseId);if(s&&(s.parentId&&byId(s.parentId)||M.indexOf(s)<M.indexOf(p)))return false;return true}
+const av=p=>p.photo?`<span class="av s" style="background-image:url('${p.photo}')"></span>`:"";
+function node(p,g,depth){
+ const s=byId(p.spouseId),kids=depth>30?[]:M.filter(x=>x.parentId===p.id||(s&&x.parentId===s.id));
+ const yrs=p.birth&&p.birth.y?p.birth.y+(p.death&&(p.death.y||p.death.m)?"–"+(p.death.y||"?"):""):"";
+ const card=`<div class="c ${p.gender==="nu"?"nu":""}" data-e="${p.id}">${av(p)}<span class="g">Đời ${g}</span><span class="n">${esc(p.name)}${p.death?" †":""}</span>${yrs?` <span class="m">${esc(yrs)}</span>`:""}${s?`<div class="m">⚭ ${esc(s.name)}${s.death?" †":""}</div>`:""}${p.hometown?`<div class="m">📍 ${esc(p.hometown)}</div>`:""}</div>`;
+ if(!kids.length)return `<li>${card}</li>`;
+ return `<li><details open><summary>${card}</summary><ul class="t">${kids.map(k=>node(k,g+1,depth+1)).join("")}</ul></details></li>`}
+function gioBn(){const ok=o=>o.e.t==="gio"||o.e.t==="clan",A=GIO.length?GIO:OUT.filter(ok).slice(0,1);if(!A.length)return"";
+ return `<div class="bn"><b>🕯 Ngày giỗ và lễ ${GIO.length?"sắp tới (trong 30 ngày)":"kế tiếp"}</b>`+A.slice(0,6).map(o=>{const e=o.e,c=e.t==="clan",n=!c&&e.y?o.L[2]-e.y:0;
+  return `<div class="bi" ${c?`data-ce="${e.c.id}"`:`data-e="${e.p.id}"`}>${c?"🏯 ":""}${esc(e.p.name)}${n>0?" · giỗ lần thứ "+n:""}${c&&e.c.place?" · "+esc(e.c.place):""} · ${o.i===0?"hôm nay":o.i===1?"ngày mai":"còn "+o.i+" ngày"} · ${o.d}/${o.m} (ÂL ${o.L[0]}/${o.L[1]})</div>`}).join("")+`</div>`}
+function clanCard(){const i=C.info,t=x=>esc(x);
+ if(!(i.origin||i.hall||i.head||i.history||i.motto))return `<div class="bn" style="border-color:var(--bd)"><div class="sub">Chưa có mô tả dòng họ (nguồn gốc, nhà thờ họ, lịch sử, gia huấn).</div><button class="b s" id="bci" style="margin-top:6px">📜 Thêm mô tả dòng họ</button></div>`;
+ return `<div class="bn" style="border-color:var(--bd)"><b>📜 Giới thiệu dòng họ</b>${i.origin?`<div class="m">🌾 ${t(i.origin)}</div>`:""}${i.hall?`<div class="m">🏯 Nhà thờ họ: ${t(i.hall)}</div>`:""}${i.head?`<div class="m">👤 Trưởng họ: ${t(i.head)}</div>`:""}${i.history?`<div class="sub">${t(i.history.slice(0,160))}${i.history.length>160?"…":""}</div>`:""}<div style="margin-top:6px"><button class="b s" id="bcv">Xem đầy đủ</button><button class="b s" id="bci">✏️ Sửa</button></div></div>`}
+function bkWarn(){let t=0;try{t=+localStorage.getItem(KEY+"_bk")||0}catch(e){}if(M.length<3||Date.now()-t<30*864e5)return"";return `<div class="bn" style="border-color:var(--ac)"><b>💾 Nhớ sao lưu</b><div class="sub">${t?"Đã hơn 30 ngày chưa xuất file Excel.":"Bạn chưa xuất file Excel lần nào."} Dữ liệu chỉ nằm trên máy này.</div><button class="b" id="gobk" style="margin-top:6px">Sao lưu ngay</button></div>`}
+function banner(){const w=bkWarn();if(!SOON.length)return w;return w+`<div class="bn"><b>🎂 Sắp đến sinh nhật</b>`+SOON.map(o=>{const e=o.e,n=e.y?(e.l?o.L[2]:o.y)-e.y:0;return `<div class="bi" data-e="${e.p.id}">${esc(e.p.name)}${n>0?" ("+n+" tuổi)":""} · ${o.i===0?"hôm nay":o.i===1?"ngày mai":"còn "+o.i+" ngày"} · ${o.d}/${o.m}</div>`}).join("")+`</div>`}
+const famTitle=()=>"Gia phả dòng họ"+(FN?" "+FN:"");
+function renderTitle(){$("#ttl").textContent="🌳 "+famTitle();document.title=famTitle()}
+function titleCard(){return `<div class="bn" style="border-color:var(--bd)"><div style="display:flex;align-items:center;gap:8px"><div style="flex:1"><b>${esc(famTitle())}</b><div class="sub">${M.length} thành viên</div></div><button class="b s" id="bfn" style="margin:0">✏️ Đổi tên</button></div>${M.length?`<div class="tbar" style="margin-top:6px"><button class="b s" id="bex">⊞ Mở hết</button><button class="b s" id="bco">⊟ Thu gọn</button><button class="b s" id="bst">📊 Thống kê</button><button class="b s" id="bpr">🖨 In</button></div>`:""}</div>`}
+function openName(){$("#sh").innerHTML='<h3 style="margin:0 0 4px">Tên gia phả dòng họ</h3><label>Tên dòng họ (ví dụ: Đinh)</label><input id="fnm" placeholder="Đinh" value="'+esc(FN)+'"><div style="margin-top:12px"><button class="b" id="okn">Lưu</button><button class="b s" id="non">Đóng</button></div>';$("#ov").classList.add("on");$("#non").onclick=closeForm;$("#okn").onclick=()=>{FN=$("#fnm").value.trim().replace(/^(gia ph[ảa][ ]*)?(d[òo]ng h[ọo][ ]*)?/i,"");save();closeForm();render()};setTimeout(()=>$("#fnm").focus(),50)}
+function renderTree(){
+ if(!M.length){$("#t0").innerHTML=titleCard()+clanCard()+`<div class="emp">Chưa có thành viên nào.<br>Bấm nút <b>+</b> để thêm vị tổ đầu tiên.<br><br><button class="b s" id="demo">Nạp dữ liệu mẫu</button></div>`;return}
+ const roots=M.filter(isRoot);$("#t0").innerHTML=titleCard()+clanCard()+gioBn()+banner()+`<ul class="t root">${roots.map(r=>node(r,1,0)).join("")}</ul>`}
+
+// ---- Danh sách ----
+const nz=t=>String(t==null?"":t).normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/đ/gi,"d").toLowerCase();
+const SK={name:p=>p.name+" "+(p.alias||""),home:p=>p.hometown,res:p=>p.residence,addr:p=>p.address,job:p=>[p.job,p.pos,p.edu].join(" "),soc:p=>p.soc};
+function hay(p){const f=SK[$("#qk").value];return f?String(f(p)||""):[p.name,p.alias,p.hometown,p.residence,p.address,p.phone,p.cccd,p.job,p.pos,p.edu,p.soc,p.grave].join(" ")}
+function renderList(){
+ const q=nz($("#q").value.trim());
+ const f=$("#qf").value;const L=M.filter(p=>(f==="nam"?p.gender!=="nu":f==="nu"?p.gender==="nu":f==="alive"?!p.death:f==="dead"?!!p.death:true)&&(!q||nz(hay(p)).includes(q))).sort((a,b)=>a.name.localeCompare(b.name,"vi"));
+ $("#list").innerHTML=L.length?L.map(p=>`<div class="c ${p.gender==="nu"?"nu":""}" style="margin:6px 0" data-e="${p.id}">${av(p)}<span class="n">${esc(p.name)}${p.death?" †":""}</span>${p.alias?` <span class="m">(${esc(p.alias)})</span>`:""}<div class="m">Sinh: ${esc(fmt(p.birth)||"—")}${p.death?" · Mất: "+esc(fmt(p.death)||"?"):""}</div>${p.hometown?`<div class="m">📍 ${esc(p.hometown)}</div>`:""}${p.phone?`<div class="m">📞 ${esc(p.phone)}</div>`:""}${p.address?`<div class="m">🏠 ${esc(p.address)}</div>`:""}${p.job||p.pos?`<div class="m">💼 ${esc([p.job,p.pos].filter(Boolean).join(" · "))}</div>`:""}</div>`).join(""):`<div class="emp">Không có kết quả.</div>`}
+
+// ---- Nhắc ngày giỗ / sinh nhật ----
+function renderRem(){
+ const lm={},sm={};
+ const add=(map,k,o)=>(map[k]=map[k]||[]).push(o);
+ M.forEach(p=>{
+  const b=p.birth;if(b&&b.d&&b.m){if(b.l)add(lm,b.d+"/"+b.m,{p,t:"bd",y:b.y,l:1});else add(sm,b.d+"/"+b.m,{p,t:"bd",y:b.y})}
+  const x=p.death;if(x&&x.d&&x.m){if(x.l)add(lm,x.d+"/"+x.m,{p,t:"gio",y:x.y,l:1});else{const L=s2l(x.d,x.m,x.y||2000);add(lm,L[0]+"/"+L[1],{p,t:"gio",y:x.y?L[2]:0,l:1})}}
+ });
+ (C.ev||[]).forEach(v=>{if(!(v.d&&v.m))return;const o={p:{id:"c_"+v.id,name:v.name},t:"clan",c:v,l:v.l?1:0};if(v.l)add(lm,v.d+"/"+v.m,o);else add(sm,v.d+"/"+v.m,o)});
+ const out=[],t0=new Date();t0.setHours(12,0,0,0);
+ for(let i=0;i<366;i++){
+  const dt=new Date(t0.getTime()+i*864e5),d=dt.getDate(),m=dt.getMonth()+1,y=dt.getFullYear(),L=s2l(d,m,y);
+  const ev=[...(L[3]?[]:lm[L[1]!=null?L[0]+"/"+L[1]:""]||[]),...(sm[d+"/"+m]||[])];
+  ev.forEach(e=>out.push({i,d,m,y,L,e}))}
+ const draw=(sel,t,intro,emp)=>{const A=out.filter(o=>(o.e.t===t||(t==="gio"&&o.e.t==="clan"))&&(t==="gio"||!o.e.p.death));$(sel).innerHTML=`<p class="sub">${intro}</p>`+(A.length?A.map(o=>{
+  const e=o.e,n=e.t==="gio"?(e.y?o.L[2]-e.y:0):(e.y?(e.l?o.L[2]:o.y)-e.y:0);
+  const when=o.i===0?"Hôm nay":o.i===1?"Ngày mai":"Còn "+o.i+" ngày";
+  return `<div class="ev" ${e.t==="clan"?`data-ce="${e.c.id}"`:`data-e="${e.p.id}"`} style="${o.i<=7?"border:2px solid var(--ac2)":""}"><div class="dt"><b>${o.d}/${o.m}</b>${o.y}</div><div style="flex:1"><div><span class="tag ${e.t==="bd"?"bd":""}">${e.t==="gio"?"Ngày giỗ":e.t==="clan"?"Giỗ/lễ họ":"Sinh nhật"}</span> <b>${esc(e.p.name)}</b></div><div class="sub">Âm lịch ${o.L[0]}/${o.L[1]}${n>0?" · "+(e.t==="gio"?"giỗ lần thứ "+n:n+" tuổi"):""} · ${when}${e.t==="clan"&&e.c.place?" · "+esc(e.c.place):""}</div></div></div>`}).join(""):`<div class="emp">${emp}</div>`)};
+ draw("#t2","gio","Giỗ của các thành viên và giỗ/lễ chung của dòng họ trong 12 tháng tới (tính theo âm lịch).","Chưa có ngày giỗ nào. Hãy nhập ngày mất cho thành viên đã khuất, hoặc thêm ngày giỗ/lễ của dòng họ.");
+ draw("#t3","bd","Sinh nhật của các thành viên còn sống trong 12 tháng tới. Khung vàng là trong vòng 7 ngày.","Chưa có sinh nhật nào. Hãy nhập ngày sinh cho thành viên.");
+ $("#t2").insertAdjacentHTML("afterbegin",`<div class="tbar"><button class="b s" id="bce">＋ Ngày giỗ / lễ của dòng họ</button><button class="b s" id="bps">🖨 In sổ giỗ</button></div>`);
+ const Y0=new Date().getFullYear(),TN={60:"Lục tuần",70:"Thất tuần",80:"Bát tuần",90:"Cửu tuần",100:"Bách niên"},TH=M.filter(p=>!p.death&&p.birth&&p.birth.y&&TN[Y0-p.birth.y+1]);
+ if(TH.length)$("#t3").insertAdjacentHTML("beforeend",`<h3>🎂 Mừng thọ năm ${Y0}</h3><p class="sub">Tính theo tuổi ta (năm nay − năm sinh + 1).</p>`+TH.map(p=>`<div class="ev" data-e="${p.id}"><div style="flex:1"><b>${esc(p.name)}</b><div class="sub">${TN[Y0-p.birth.y+1]} · tròn ${Y0-p.birth.y+1} tuổi (sinh năm ${p.birth.y})</div></div></div>`).join(""));
+ SOON=out.filter(o=>o.e.t==="bd"&&!o.e.p.death&&o.i<=7);OUT=out;GIO=out.filter(o=>(o.e.t==="gio"||o.e.t==="clan")&&o.i<=30);schedNotif(out)}
+
+// ---- Form ----
+const dr=(k,v)=>`<div class="r"><input type="number" inputmode="numeric" min="1" max="31" placeholder="Ngày" id="${k}d" value="${esc(v.d||"")}"><input type="number" inputmode="numeric" min="1" max="12" placeholder="Tháng" id="${k}m" value="${esc(v.m||"")}"><input type="number" inputmode="numeric" placeholder="Năm" id="${k}y" value="${esc(v.y||"")}"><select class="w" id="${k}l"><option value="0"${v.l?"":" selected"}>Dương lịch</option><option value="1"${v.l?" selected":""}>Âm lịch</option></select></div>`;
+function opts(sel,skip){return `<option value="">— Không —</option>`+M.filter(x=>x.id!==skip).map(x=>`<option value="${x.id}"${x.id===sel?" selected":""}>${esc(x.name)}</option>`).join("")}
+function relInfo(p){const l=a=>a.map(x=>`<a href="#" data-e="${x.id}" style="color:var(--ac)">${esc(x.name)}</a>`).join(", ")||"—";
+ const f=byId(p.parentId),s=byId(p.spouseId),sib=f?M.filter(x=>x.parentId===f.id&&x.id!==p.id):[],kids=M.filter(x=>x.parentId===p.id||(s&&x.parentId===s.id));
+ return `<div class="bn" style="border-color:var(--bd);font-size:14px"><span class="g">Đời ${gen(p)}</span><div>Cha/mẹ: ${l(f?[f]:[])}</div><div>Vợ/chồng: ${l(s?[s]:[])}</div><div>Anh chị em: ${l(sib)}</div><div>Con: ${l(kids)}</div></div>`}
+function openForm(id,pre){
+ const p=id?byId(id):{birth:{},death:null,...(pre||{})},nw=!id;
+ $("#sh").innerHTML=`<h3 style="margin:0 0 4px">${nw?"Thêm thành viên":"Hồ sơ thành viên"}</h3>${nw?"":relInfo(p)}
+ <label>Họ và tên</label><input id="fn" value="${esc(p.name||"")}">
+ <label>Tên gọi khác</label><input id="fa" value="${esc(p.alias||"")}">
+ <label>Ảnh</label><div style="display:flex;gap:10px;align-items:center"><div class="av" id="fpv" style="width:64px;height:64px;font-size:28px"></div><div style="flex:1"><input type="file" id="fph" accept="image/*"><button type="button" class="b s" id="fpx">Xóa ảnh</button></div></div>
+ <label>Giới tính</label><select id="fg"><option value="nam">Nam</option><option value="nu"${p.gender==="nu"?" selected":""}>Nữ</option></select>
+ <label>Con của (cha/mẹ)</label><select id="fp">${opts(p.parentId,p.id)}</select>
+ <label>Vợ / chồng</label><select id="fs">${opts(p.spouseId,p.id)}</select>
+ <label>Ngày sinh</label>${dr("b",p.birth||{})}
+ <label><input type="checkbox" id="fd" style="width:auto"${p.death?" checked":""}> Đã mất</label>
+ <div id="dw" style="display:${p.death?"block":"none"}"><label>Ngày mất (giỗ)</label>${dr("x",p.death||{l:1})}<label>Nơi an táng / mộ phần</label><input id="fgv" value="${esc(p.grave||"")}"></div>
+ <label>Quê quán</label><input id="fh" value="${esc(p.hometown||"")}">
+ <label>Nơi thường trú</label><input id="fr" value="${esc(p.residence||"")}">
+ <label>Chỗ ở hiện nay</label><input id="fc" value="${esc(p.address||"")}">
+ <label>Số điện thoại</label><input id="ft" type="tel" inputmode="tel" value="${esc(p.phone||"")}">${p.phone&&!nw?`<div style="margin-top:6px"><button type="button" class="b s" id="bcall">📞 Gọi</button><button type="button" class="b s" id="bzl">💬 Zalo</button></div>`:""}
+ <label>Số CCCD</label><input id="fcc" inputmode="numeric" maxlength="12" value="${esc(p.cccd||"")}">
+ <label>Trình độ học vấn</label><input id="fed" list="edl" value="${esc(p.edu||"")}"><datalist id="edl"><option value="Tiểu học"><option value="THCS"><option value="THPT"><option value="Trung cấp"><option value="Cao đẳng"><option value="Đại học"><option value="Thạc sĩ"><option value="Tiến sĩ"></datalist>
+ <label>Nghề nghiệp</label><input id="fjb" value="${esc(p.job||"")}">
+ <label>Chức vụ</label><input id="fps" value="${esc(p.pos||"")}">
+ <label>Mối quan hệ xã hội</label><textarea id="fso" style="min-height:60px;font:inherit" placeholder="Ví dụ: Chủ tịch Hội Cựu chiến binh xã; bạn thân của ông…">${esc(p.soc||"")}</textarea>
+ <label>Ghi chú</label><textarea id="fno" style="min-height:70px;font:inherit">${esc(p.note||"")}</textarea>
+ <div style="margin-top:12px"><button class="b" id="ok">Lưu</button><button class="b s" id="no">Đóng</button>${nw?"":`<button class="b d" id="del">Xóa</button>`}</div>${nw?"":`<div style="margin-top:6px"><button class="b s" id="adc">＋ Thêm con</button>${p.death?`<button class="b s" id="bshr">📣 Báo giỗ</button>`:""}${p.spouseId?"":`<button class="b s" id="adp">＋ Thêm vợ/chồng</button>`}</div>`}`;
+ $("#ov").classList.add("on");
+ let ph=p.photo||"";const pv=()=>{$("#fpv").style.backgroundImage=ph?"url('"+ph+"')":"";$("#fpv").textContent=ph?"":"👤"};pv();
+ $("#fph").onchange=e=>{const f=e.target.files[0];if(f)readPhoto(f,u=>{ph=u;pv()})};
+ $("#fpx").onclick=()=>{ph="";pv()};
+ $("#fd").onchange=e=>$("#dw").style.display=e.target.checked?"block":"none";
+ $("#no").onclick=closeForm;
+ $("#ok").onclick=()=>{
+  const name=$("#fn").value.trim();if(!name){$("#fn").focus();return}
+  const rd=k=>({d:+$("#"+k+"d").value||0,m:+$("#"+k+"m").value||0,y:+$("#"+k+"y").value||0,l:$("#"+k+"l").value==="1"});
+  const o=nw?{id:uid()}:p;
+  const oldS=o.spouseId;
+  Object.assign(o,{name,gender:$("#fg").value,parentId:$("#fp").value||"",spouseId:$("#fs").value||"",birth:rd("b"),death:$("#fd").checked?rd("x"):null,hometown:$("#fh").value.trim(),alias:$("#fa").value.trim(),photo:ph,residence:$("#fr").value.trim(),address:$("#fc").value.trim(),phone:$("#ft").value.trim(),note:$("#fno").value.trim(),cccd:$("#fcc").value.trim(),edu:$("#fed").value.trim(),job:$("#fjb").value.trim(),pos:$("#fps").value.trim(),soc:$("#fso").value.trim(),grave:$("#fd").checked?$("#fgv").value.trim():""});
+  if(nw)M.push(o);
+  if(oldS&&oldS!==o.spouseId){const a=byId(oldS);if(a&&a.spouseId===o.id)a.spouseId=""}
+  if(o.spouseId){const s=byId(o.spouseId);if(s){if(s.spouseId&&s.spouseId!==o.id){const z=byId(s.spouseId);if(z)z.spouseId=""}s.spouseId=o.id}}
+  save();closeForm();render()};
+ if(nw)setTimeout(()=>$("#fn").focus(),50);
+ if($("#adc"))$("#adc").onclick=()=>{closeForm();openForm(null,{parentId:p.id,name:p.gender==="nu"?"":p.name.split(" ")[0]+" "})};
+ if($("#adp"))$("#adp").onclick=()=>{closeForm();openForm(null,{spouseId:p.id,gender:p.gender==="nu"?"nam":"nu"})};
+ if($("#bcall"))$("#bcall").onclick=()=>{location.href="tel:"+p.phone.replace(/[^\d+]/g,"")};
+ if($("#bzl"))$("#bzl").onclick=()=>window.open("https://zalo.me/"+p.phone.replace(/\D/g,""),"_blank");
+ if($("#bshr"))$("#bshr").onclick=()=>{const o=OUT.find(x=>x.e.t==="gio"&&x.e.p.id===p.id);if(!o){alert("Chưa tính được ngày giỗ trong 12 tháng tới. Hãy nhập đủ ngày và tháng mất.");return}
+  const n=o.e.y?o.L[2]-o.e.y:0;shareText("Kính báo: ngày "+o.d+"/"+o.m+"/"+o.y+" dương lịch (ngày "+o.L[0]+"/"+o.L[1]+" âm lịch) là ngày giỗ "+(p.gender==="nu"?"bà ":"ông ")+p.name+(n>0?" (giỗ lần thứ "+n+")":"")+"."+(p.grave?" Phần mộ: "+p.grave+".":"")+" Kính mời con cháu trong họ sắp xếp thời gian về dự."+(FN?" — Dòng họ "+FN:""))};
+ if($("#del"))$("#del").onclick=()=>{if(!confirm("Xóa "+p.name+"?"))return;M=M.filter(x=>x.id!==p.id);M.forEach(x=>{if(x.parentId===p.id)x.parentId="";if(x.spouseId===p.id)x.spouseId=""});save();closeForm();render()}}
+function closeForm(){$("#ov").classList.remove("on")}
+
+// ---- Sao lưu ----
+function setMsg(t){$("#msg").textContent=t}
+
+
+
+
+
+$("#bclr").onclick=()=>{if(confirm("Xóa toàn bộ dữ liệu? Không thể hoàn tác.")){M=[];save();render();setMsg("Đã xóa.")}};
+
+// ---- Ảnh ----
+function readPhoto(f,cb){const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const S=200,c=document.createElement("canvas");c.width=c.height=S;const m=Math.min(im.width,im.height);c.getContext("2d").drawImage(im,(im.width-m)/2,(im.height-m)/2,m,m,0,0,S,S);cb(c.toDataURL("image/jpeg",0.72))};im.onerror=()=>cb("");im.src=r.result};r.readAsDataURL(f)}
+
+// ---- Lưu file (APK: chia sẻ qua Filesystem+Share; web: downloads) ----
+async function saveFile(name,blob){
+ const C=window.Capacitor,F=C&&C.Plugins&&C.Plugins.Filesystem,S=C&&C.Plugins&&C.Plugins.Share;
+ if(C&&C.isNativePlatform&&C.isNativePlatform()&&F&&S){
+  const b64=await new Promise(res=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(",")[1]);r.readAsDataURL(blob)});
+  const w=await F.writeFile({path:name,data:b64,directory:"CACHE"});
+  await S.share({title:name,url:w.uri,dialogTitle:"Lưu hoặc gửi file Excel"});return "ok"}
+ try{const d=window.claude&&window.claude.use?await window.claude.use("downloads"):null;if(d){await d.save({filename:name,data:blob});return "ok"}}catch(e){if(e&&e.code==="declined")return "declined"}
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();return "ok"}
+
+// ---- Excel (tự viết, không cần thư viện ngoài) ----
+const CT=(()=>{const t=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();
+const crc=u=>{let c=-1;for(let i=0;i<u.length;i++)c=CT[(c^u[i])&255]^(c>>>8);return(c^-1)>>>0};
+function zip(files){const E=new TextEncoder(),parts=[],cd=[];let off=0;
+ files.forEach(([n,s])=>{const nb=E.encode(n),d=E.encode(s),c=crc(d),h=new DataView(new ArrayBuffer(30)),g=new DataView(new ArrayBuffer(46));
+  h.setUint32(0,0x04034b50,true);h.setUint16(4,20,true);h.setUint16(6,0x0800,true);h.setUint16(12,0x21,true);h.setUint32(14,c,true);h.setUint32(18,d.length,true);h.setUint32(22,d.length,true);h.setUint16(26,nb.length,true);
+  g.setUint32(0,0x02014b50,true);g.setUint16(4,20,true);g.setUint16(6,20,true);g.setUint16(8,0x0800,true);g.setUint16(14,0x21,true);g.setUint32(16,c,true);g.setUint32(20,d.length,true);g.setUint32(24,d.length,true);g.setUint16(28,nb.length,true);g.setUint32(42,off,true);
+  parts.push(new Uint8Array(h.buffer),nb,d);cd.push(new Uint8Array(g.buffer),nb);off+=30+nb.length+d.length});
+ const cs=cd.reduce((a,b)=>a+b.length,0),e=new DataView(new ArrayBuffer(22));
+ e.setUint32(0,0x06054b50,true);e.setUint16(8,files.length,true);e.setUint16(10,files.length,true);e.setUint32(12,cs,true);e.setUint32(16,off,true);
+ return new Blob([...parts,...cd,new Uint8Array(e.buffer)],{type:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"})}
+const XH=["ID","Họ và tên","Tên gọi khác","Giới tính","Tên cha/mẹ","ID cha/mẹ","Tên vợ/chồng","ID vợ/chồng","Sinh - Ngày","Sinh - Tháng","Sinh - Năm","Sinh - Lịch","Đã mất","Mất - Ngày","Mất - Tháng","Mất - Năm","Mất - Lịch","Quê quán","Nơi thường trú","Chỗ ở hiện nay","Số điện thoại","Ghi chú","Ảnh (base64)","Tên gia phả","Số CCCD","Trình độ học vấn","Nghề nghiệp","Chức vụ","Mối quan hệ xã hội","Nơi an táng","Dữ liệu dòng họ"];
+const XML='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>',NS='http://schemas.openxmlformats.org/';
+const col=i=>{let s="";i++;while(i>0){const m=(i-1)%26;s=String.fromCharCode(65+m)+s;i=Math.floor((i-1)/26)}return s};
+const xe=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+function sheet(rows){return XML+'<worksheet xmlns="'+NS+'spreadsheetml/2006/main"><sheetData>'+rows.map((r,i)=>'<row r="'+(i+1)+'">'+r.map((v,j)=>{const ref=col(j)+(i+1);return v===""||v==null?"":typeof v==="number"?'<c r="'+ref+'"><v>'+v+'</v></c>':'<c r="'+ref+'" t="inlineStr"><is><t xml:space="preserve">'+xe(v)+'</t></is></c>'}).join("")+'</row>').join("")+'</sheetData></worksheet>'}
+function toRows(){const n=v=>v?+v:"";return [XH,...M.map((p,i)=>{const s=byId(p.spouseId),f=byId(p.parentId),b=p.birth||{},x=p.death||{};return [p.id,p.name,p.alias||"",p.gender==="nu"?"Nữ":"Nam",f?f.name:"",p.parentId||"",s?s.name:"",p.spouseId||"",n(b.d),n(b.m),n(b.y),b.l?"Âm lịch":"Dương lịch",p.death?"Có":"Không",n(x.d),n(x.m),n(x.y),p.death?(x.l?"Âm lịch":"Dương lịch"):"",p.hometown||"",p.residence||"",p.address||"",p.phone||"",p.note||"",p.photo||"",i===0?FN:"",p.cccd||"",p.edu||"",p.job||"",p.pos||"",p.soc||"",p.grave||"",i===0?JSON.stringify(C):""]})]}
+function xlsx(){const R=NS+'package/2006/relationships',O=NS+'officeDocument/2006/relationships';return zip([
+ ['[Content_Types].xml',XML+'<Types xmlns="'+NS+'package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/></Types>'],
+ ['_rels/.rels',XML+'<Relationships xmlns="'+R+'"><Relationship Id="rId1" Type="'+O+'/officeDocument" Target="xl/workbook.xml"/></Relationships>'],
+ ['xl/workbook.xml',XML+'<workbook xmlns="'+NS+'spreadsheetml/2006/main" xmlns:r="'+O+'"><sheets><sheet name="Gia pha" sheetId="1" r:id="rId1"/></sheets></workbook>'],
+ ['xl/_rels/workbook.xml.rels',XML+'<Relationships xmlns="'+R+'"><Relationship Id="rId1" Type="'+O+'/worksheet" Target="worksheets/sheet1.xml"/></Relationships>'],
+ ['xl/worksheets/sheet1.xml',sheet(toRows())]])}
+async function inflate(u){return new Uint8Array(await new Response(new Blob([u]).stream().pipeThrough(new DecompressionStream("deflate-raw"))).arrayBuffer())}
+async function unzip(buf){const v=new DataView(buf),u=new Uint8Array(buf),D=new TextDecoder(),out={};let e=buf.byteLength-22;while(e>=0&&v.getUint32(e,true)!==0x06054b50)e--;if(e<0)throw 0;
+ const n=v.getUint16(e+10,true);let p=v.getUint32(e+16,true);
+ for(let i=0;i<n;i++){const m=v.getUint16(p+10,true),cs=v.getUint32(p+20,true),nl=v.getUint16(p+28,true),el=v.getUint16(p+30,true),cl=v.getUint16(p+32,true),lo=v.getUint32(p+42,true),name=D.decode(u.subarray(p+46,p+46+nl)),ds=lo+30+v.getUint16(lo+26,true)+v.getUint16(lo+28,true),raw=u.subarray(ds,ds+cs);
+  if(/^xl\/(worksheets\/sheet[0-9]+|sharedStrings)\.xml$/.test(name))out[name]=D.decode(m===0?raw:await inflate(raw));p+=46+nl+el+cl}return out}
+async function readXlsx(buf){const z=await unzip(buf),P=new DOMParser(),sk=Object.keys(z).filter(k=>k.includes("worksheets")).sort()[0];if(!sk)throw 0;
+ const ss=z["xl/sharedStrings.xml"]?[...P.parseFromString(z["xl/sharedStrings.xml"],"application/xml").getElementsByTagName("si")].map(si=>[...si.getElementsByTagName("t")].map(t=>t.textContent).join("")):[],rows=[];
+ [...P.parseFromString(z[sk],"application/xml").getElementsByTagName("row")].forEach(r=>{const a=[];[...r.getElementsByTagName("c")].forEach(c=>{const ref=(c.getAttribute("r")||"").replace(/[0-9]/g,""),t=c.getAttribute("t"),ve=c.getElementsByTagName("v")[0];let ci=0;for(const ch of ref)ci=ci*26+ch.charCodeAt(0)-64;ci--;let val="";
+  if(t==="inlineStr")val=[...c.getElementsByTagName("t")].map(x=>x.textContent).join("");else if(ve)val=t==="s"?ss[+ve.textContent]||"":ve.textContent;a[ci>=0?ci:a.length]=val});rows.push(a)});return rows}
+function rowsToM(rows){const h=(rows[0]||[]).map(x=>String(x||"").trim()),ix=k=>h.indexOf(k);if(ix("Họ và tên")<0)throw 0;
+ const g=(r,k)=>{const i=ix(k);return i<0||r[i]==null?"":String(r[i]).trim()},nm=(r,k)=>+g(r,k)||0,lu=v=>/^(âm|am)/i.test(v);
+ const A=rows.slice(1).filter(r=>g(r,"Họ và tên")).map(r=>{const mt=g(r,"Đã mất"),d={d:nm(r,"Mất - Ngày"),m:nm(r,"Mất - Tháng"),y:nm(r,"Mất - Năm"),l:lu(g(r,"Mất - Lịch"))},dead=/^(có|co|x|1|true|yes)/i.test(mt)||(!mt&&(d.d||d.m||d.y)),im=g(r,"Ảnh (base64)");
+  return {r,p:{id:g(r,"ID")||uid(),name:g(r,"Họ và tên"),alias:g(r,"Tên gọi khác"),gender:/^(nữ|nu|f)/i.test(g(r,"Giới tính"))?"nu":"nam",parentId:"",spouseId:"",birth:{d:nm(r,"Sinh - Ngày"),m:nm(r,"Sinh - Tháng"),y:nm(r,"Sinh - Năm"),l:lu(g(r,"Sinh - Lịch"))},death:dead?d:null,hometown:g(r,"Quê quán"),residence:g(r,"Nơi thường trú"),address:g(r,"Chỗ ở hiện nay"),phone:g(r,"Số điện thoại"),note:g(r,"Ghi chú"),cccd:g(r,"Số CCCD"),edu:g(r,"Trình độ học vấn"),job:g(r,"Nghề nghiệp"),pos:g(r,"Chức vụ"),soc:g(r,"Mối quan hệ xã hội"),grave:g(r,"Nơi an táng"),photo:im.startsWith("data:image/")&&/^[A-Za-z0-9+/=,;:.-]*$/.test(im)?im:""}}});
+ const ids=new Set(A.map(x=>x.p.id)),byN=n=>{const f=n&&A.find(x=>x.p.name===n);return f?f.p.id:""};
+ A.forEach(({r,p})=>{const pi=g(r,"ID cha/mẹ"),si=g(r,"ID vợ/chồng");p.parentId=ids.has(pi)?pi:byN(g(r,"Tên cha/mẹ"));p.spouseId=ids.has(si)?si:byN(g(r,"Tên vợ/chồng"));if(p.parentId===p.id)p.parentId="";if(p.spouseId===p.id)p.spouseId=""});
+ const L=A.map(x=>x.p);L.forEach(p=>{const s=L.find(x=>x.id===p.spouseId);if(s&&!s.spouseId)s.spouseId=p.id});const ti=ix("Tên gia phả"),tv=ti<0?null:rows.slice(1).map(r=>r[ti]).find(v=>v&&String(v).trim());L.fam=tv?String(tv).trim():"";const ci=ix("Dữ liệu dòng họ"),cv=ci<0?null:rows.slice(1).map(r=>r[ci]).find(v=>v&&String(v).trim());try{L.clan=cv?normC(JSON.parse(cv)):null}catch(e){L.clan=null}return L}
+$("#bxl").onclick=async()=>{if(!M.length){setMsg("Chưa có dữ liệu để xuất.");return}
+ try{const r=await saveFile("gia-pha-"+new Date().toISOString().slice(0,10)+".xlsx",xlsx());if(r==="ok"){try{localStorage.setItem(KEY+"_bk",Date.now())}catch(e){}render()}setMsg(r==="ok"?"Đã tạo file Excel.":"Bạn đã hủy lưu file.")}catch(e){setMsg("Không xuất được file Excel.")}};
+$("#fxl").onchange=async e=>{const f=e.target.files[0];e.target.value="";if(!f)return;
+ try{const L=rowsToM(await readXlsx(await f.arrayBuffer()));if(!L.length)throw 0;if(M.length&&!confirm("Thay toàn bộ dữ liệu hiện tại bằng "+L.length+" thành viên trong file Excel?"))return;M=L;if(L.fam)FN=L.fam;if(L.clan){C=L.clan;saveClan()}save();render();setMsg("Đã khôi phục "+L.length+" thành viên từ Excel.")}catch(err){setMsg("Không đọc được file Excel. Hãy dùng file do app này xuất ra.")}};
+
+// ---- Thông báo (chỉ hoạt động trong bản APK) ----
+const LN=()=>{const C=window.Capacitor;return C&&C.isNativePlatform&&C.isNativePlatform()&&C.Plugins&&C.Plugins.LocalNotifications};
+const nOn=()=>{try{return localStorage.getItem("giapha_notif")==="1"}catch(e){return false}};
+async function schedNotif(out){
+ const P=LN();if(!P||!nOn())return;
+ try{
+  const pd=await P.getPending();if(pd.notifications&&pd.notifications.length)await P.cancel({notifications:pd.notifications});
+  const L=[];
+  out.forEach(o=>{const e=o.e,w=e.p.name;if(e.t==="bd"&&e.p.death)return;
+   const n=e.y?(e.t==="gio"||e.l?o.L[2]:o.y)-e.y:0;
+   if(e.t==="clan"){const pl=e.c.place?" tại "+e.c.place:"";
+    L.push([new Date(o.y,o.m-1,o.d-1,18,0),"Mai là "+w,"Ngày mai (âm lịch "+o.L[0]+"/"+o.L[1]+") là "+w+pl]);
+    L.push([new Date(o.y,o.m-1,o.d,7,0),"Hôm nay là "+w,"Hôm nay là "+w+pl])}
+   else if(e.t==="gio"){const k=n>0?" (giỗ lần thứ "+n+")":"";
+    L.push([new Date(o.y,o.m-1,o.d-1,18,0),"Mai là ngày giỗ","Ngày mai (âm lịch "+o.L[0]+"/"+o.L[1]+") là ngày giỗ "+w+k]);
+    L.push([new Date(o.y,o.m-1,o.d,7,0),"Hôm nay là ngày giỗ","Hôm nay là ngày giỗ "+w+k])}
+   else L.push([new Date(o.y,o.m-1,o.d,7,0),"Hôm nay là sinh nhật "+w,n>0?w+" tròn "+n+" tuổi":"Chúc mừng sinh nhật "+w])});
+  const now=Date.now(),ns=L.filter(x=>x[0].getTime()>now+6e4).sort((a,b)=>a[0]-b[0]).slice(0,60).map((x,i)=>({id:i+1,title:x[1],body:x[2],schedule:{at:x[0]}}));
+  if(ns.length)await P.schedule({notifications:ns})
+ }catch(e){}}
+function nUI(){const P=LN(),b=$("#bnot"),s=$("#nst");
+ if(!P){s.textContent="Tính năng này chỉ hoạt động trong bản APK cài trên điện thoại. Trên trình duyệt, hãy mở tab Ngày giỗ và Sinh nhật để xem lịch.";b.style.display="none";return}
+ s.textContent=nOn()?"Đang bật: nhắc lúc 7:00 sáng vào ngày sinh nhật và ngày giỗ, cùng 18:00 chiều hôm trước ngày giỗ.":"Đang tắt.";b.textContent=nOn()?"Tắt nhắc":"Bật nhắc trên điện thoại"}
+$("#bnot").onclick=async()=>{const P=LN();if(!P)return;
+ if(nOn()){try{localStorage.setItem("giapha_notif","0")}catch(e){}try{const p=await P.getPending();if(p.notifications.length)await P.cancel({notifications:p.notifications})}catch(e){}nUI();return}
+ try{const r=await P.requestPermissions();if(r.display!=="granted"){$("#nst").textContent="Bạn chưa cấp quyền thông báo. Hãy vào Cài đặt > Ứng dụng > Gia phả dòng họ > Thông báo để bật.";return}
+  localStorage.setItem("giapha_notif","1")}catch(e){return}
+ render()};
+
+// ---- Thống kê ----
+function gen(p,d){d=d||0;if(d>40)return 1;const f=byId(p.parentId);if(f)return gen(f,d+1)+1;const s=byId(p.spouseId),sf=s&&byId(s.parentId);return sf?gen(sf,d+1)+1:1}
+function openStats(){
+ const Y=new Date().getFullYear(),n=M.length,nam=M.filter(p=>p.gender!=="nu").length,dead=M.filter(p=>p.death).length;
+ const ages=M.filter(p=>!p.death&&p.birth&&p.birth.y).map(p=>Y-p.birth.y),lives=M.filter(p=>p.death&&p.death.y&&p.birth&&p.birth.y&&p.death.y>=p.birth.y).map(p=>p.death.y-p.birth.y);
+ const avg=a=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length):"—",G={},H={},J={};
+ M.forEach(p=>{const g=gen(p);G[g]=(G[g]||0)+1;const h=(p.hometown||"").trim();if(h)H[h]=(H[h]||0)+1;const j=(p.job||"").trim();if(j)J[j]=(J[j]||0)+1});
+ const hs=Object.entries(H).sort((a,b)=>b[1]-a[1]).slice(0,5),js=Object.entries(J).sort((a,b)=>b[1]-a[1]).slice(0,5),cell=(v,l)=>`<div><b>${v}</b><span class="sub">${l}</span></div>`;
+ $("#sh").innerHTML=`<h3 style="margin:0 0 4px">📊 Thống kê gia phả</h3><div class="sg">${cell(n,"Thành viên")}${cell(Object.keys(G).length,"Số đời")}${cell(nam+" / "+(n-nam),"Nam / Nữ")}${cell((n-dead)+" / "+dead,"Còn sống / Đã mất")}${cell(avg(ages),"Tuổi TB (còn sống)")}${cell(avg(lives),"Tuổi thọ TB (đã mất)")}</div><label>Số người theo đời</label>${Object.keys(G).map(g=>`<div class="m">Đời ${g}: <b>${G[g]}</b> người</div>`).join("")}${hs.length?`<label>Quê quán nhiều nhất</label>${hs.map(x=>`<div class="m">${esc(x[0])}: <b>${x[1]}</b></div>`).join("")}`:""}${js.length?`<label>Nghề nghiệp phổ biến</label>${js.map(x=>`<div class="m">${esc(x[0])}: <b>${x[1]}</b></div>`).join("")}`:""}<div style="margin-top:12px"><button class="b s" id="nos">Đóng</button></div>`;
+ $("#ov").classList.add("on");$("#nos").onclick=closeForm}
+
+// ---- Xuất lịch .ics ----
+async function exportIcs(){
+ const ev=OUT.filter(o=>o.e.t==="gio"||!o.e.p.death);if(!ev.length){setMsg("Chưa có sự kiện nào để xuất.");return}
+ const pad=n=>String(n).padStart(2,"0"),ds=dt=>dt.getFullYear()+pad(dt.getMonth()+1)+pad(dt.getDate()),tx=t=>String(t).replace(/[\\;,]/g,"\\$&"),
+ st=new Date().toISOString().replace(/[-:]/g,"").slice(0,15)+"Z",al=t=>["BEGIN:VALARM","ACTION:DISPLAY","DESCRIPTION:Nhắc lịch gia phả","TRIGGER:"+t,"END:VALARM"];
+ const L=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Gia pha dong ho//VI","CALSCALE:GREGORIAN"];
+ ev.forEach(o=>{const e=o.e,g=e.t==="gio",a=new Date(o.y,o.m-1,o.d);
+  L.push("BEGIN:VEVENT","UID:giapha-"+e.p.id+"-"+e.t+"-"+ds(a)+"@giapha","DTSTAMP:"+st,"DTSTART;VALUE=DATE:"+ds(a),"DTEND;VALUE=DATE:"+ds(new Date(o.y,o.m-1,o.d+1)),
+  "SUMMARY:"+tx((g?"Giỗ ":e.t==="clan"?"":"Sinh nhật ")+e.p.name),"DESCRIPTION:"+tx("Âm lịch "+o.L[0]+"/"+o.L[1]),...(e.t==="clan"&&e.c.place?["LOCATION:"+tx(e.c.place)]:[]),...al("PT7H"),...(g||e.t==="clan"?al("-PT6H"):[]),"END:VEVENT")});
+ L.push("END:VCALENDAR");
+ try{const r=await saveFile("gia-pha-lich.ics",new Blob([L.join("\r\n")],{type:"text/calendar;charset=utf-8"}));setMsg(r==="ok"?"Đã tạo file lịch ("+ev.length+" sự kiện). Mở file để thêm vào lịch.":"Bạn đã hủy lưu file.")}catch(e){setMsg("Không xuất được file lịch.")}}
+$("#bics").onclick=exportIcs;
+
+// ---- Giao diện ----
+function applyTheme(){let v="auto";try{v=localStorage.getItem("giapha_theme")||"auto"}catch(e){}if(v==="auto")document.documentElement.removeAttribute("data-theme");else document.documentElement.setAttribute("data-theme",v);$("#thm").value=v}
+$("#thm").onchange=e=>{try{localStorage.setItem("giapha_theme",e.target.value)}catch(x){}applyTheme()};
+$("#qf").onchange=renderList;
+
+// ---- Chia sẻ, kiểm tra dữ liệu, danh bạ ----
+async function shareText(t){const S=window.Capacitor&&Capacitor.Plugins&&Capacitor.Plugins.Share;
+ try{if(S){await S.share({text:t,dialogTitle:"Gửi thông báo"});return}if(navigator.share){await navigator.share({text:t});return}}catch(e){if(e&&e.name==="AbortError")return}
+ try{await navigator.clipboard.writeText(t);alert("Đã sao chép nội dung, hãy dán vào Zalo hoặc tin nhắn:\n\n"+t)}catch(e){prompt("Sao chép nội dung:",t)}}
+function checkData(){const I=[],add=(p,t)=>I.push([p,t]),Y=new Date().getFullYear();
+ M.forEach(p=>{const b=p.birth&&p.birth.y,x=p.death&&p.death.y;
+  if(!b)add(p,"Chưa có năm sinh");
+  if(p.death&&!(p.death.d&&p.death.m))add(p,"Đã mất nhưng thiếu ngày/tháng mất nên không có ngày giỗ");
+  if(b&&x&&x<b)add(p,"Năm mất trước năm sinh");
+  if(b&&b>Y)add(p,"Năm sinh ở tương lai");
+  if(b&&!p.death&&Y-b>110)add(p,"Còn sống nhưng trên 110 tuổi, có thể chưa ghi ngày mất");
+  const f=byId(p.parentId);if(f&&f.birth&&f.birth.y&&b){if(b<=f.birth.y)add(p,"Sinh trước hoặc cùng năm với cha/mẹ ("+f.name+")");else if(b-f.birth.y<15)add(p,"Chênh lệch tuổi với cha/mẹ dưới 15 năm ("+f.name+")")}
+  if(p.cccd&&!/^\d{12}$/.test(p.cccd))add(p,"Số CCCD không đủ 12 chữ số");
+  if(p.phone&&p.phone.replace(/\D/g,"").length<9)add(p,"Số điện thoại có vẻ chưa đúng");
+  if(b&&M.some(q=>q.id<p.id&&q.name===p.name&&q.birth&&q.birth.y===b))add(p,"Trùng họ tên và năm sinh với một hồ sơ khác");
+  let c=p,n=0;while(c&&c.parentId&&n<60){c=byId(c.parentId);n++}if(n>=60)add(p,"Quan hệ cha/mẹ bị vòng lặp")});
+ return I}
+function openCheck(){const I=checkData();
+ $("#sh").innerHTML=`<h3 style="margin:0 0 4px">🔍 Kiểm tra dữ liệu</h3>`+(I.length?`<p class="sub">Có ${I.length} điểm cần xem lại. Bấm vào để mở hồ sơ.</p>`+I.map(x=>`<div class="ev" data-e="${x[0].id}"><div style="flex:1"><b>${esc(x[0].name)}</b><div class="sub">${esc(x[1])}</div></div></div>`).join(""):`<div class="emp">✅ Không phát hiện vấn đề nào.</div>`)+`<div style="margin-top:12px"><button class="b s" id="nos">Đóng</button></div>`;
+ $("#ov").classList.add("on");$("#nos").onclick=closeForm}
+const vt=t=>String(t||"").replace(/[\\;,]/g,"\\$&").replace(/\n/g," ");
+async function exportVcf(){const A=M.filter(p=>p.phone&&!p.death);if(!A.length){setMsg("Chưa có ai còn sống có số điện thoại.");return}
+ const V=[];A.forEach(p=>{const w=p.name.trim().split(/\s+/);V.push("BEGIN:VCARD","VERSION:3.0","FN:"+vt(p.name),"N:"+vt(w[0])+";"+vt(w.slice(1).join(" "))+";;;","TEL;TYPE=CELL:"+p.phone.replace(/[^\d+]/g,""),...(p.address?["ADR;TYPE=HOME:;;"+vt(p.address)+";;;;"]:[]),...(p.pos?["TITLE:"+vt(p.pos)]:[]),"NOTE:"+vt("Gia phả dòng họ"+(FN?" "+FN:"")),"END:VCARD")});
+ try{const r=await saveFile("gia-pha-danh-ba.vcf",new Blob([V.join("\r\n")],{type:"text/vcard;charset=utf-8"}));setMsg(r==="ok"?"Đã tạo danh bạ ("+A.length+" người). Mở file để nhập vào Danh bạ.":"Bạn đã hủy lưu file.")}catch(e){setMsg("Không xuất được danh bạ.")}}
+$("#bchk").onclick=openCheck;$("#bvcf").onclick=exportVcf;
+
+// ---- Mô tả dòng họ & giỗ / lễ của họ ----
+function openClan(){const i=C.info;
+ $("#sh").innerHTML=`<h3 style="margin:0 0 4px">📜 Mô tả dòng họ</h3>
+ <label>Nguồn gốc / quê gốc / thủy tổ</label><input id="ci1" value="${esc(i.origin)}" placeholder="Ví dụ: Thủy tổ họ …, quê gốc xã …">
+ <label>Nhà thờ họ / từ đường (địa chỉ)</label><input id="ci2" value="${esc(i.hall)}">
+ <label>Trưởng họ (họ tên, điện thoại)</label><input id="ci3" value="${esc(i.head)}">
+ <label>Lịch sử dòng họ</label><textarea id="ci4" style="min-height:120px;font:inherit">${esc(i.history)}</textarea>
+ <label>Gia huấn / tộc ước</label><textarea id="ci5" style="min-height:90px;font:inherit">${esc(i.motto)}</textarea>
+ <div style="margin-top:12px"><button class="b" id="cok">Lưu</button><button class="b s" id="cno">Đóng</button></div>`;
+ $("#ov").classList.add("on");$("#cno").onclick=closeForm;
+ $("#cok").onclick=()=>{C.info={origin:$("#ci1").value.trim(),hall:$("#ci2").value.trim(),head:$("#ci3").value.trim(),history:$("#ci4").value.trim(),motto:$("#ci5").value.trim()};saveClan();closeForm();render()}}
+function openClanView(){const i=C.info,r=(l,v)=>v?`<label>${l}</label><div style="white-space:pre-wrap">${esc(v)}</div>`:"";
+ $("#sh").innerHTML=`<h3 style="margin:0 0 4px">📜 ${esc(famTitle())}</h3>`+r("Nguồn gốc",i.origin)+r("Nhà thờ họ",i.hall)+r("Trưởng họ",i.head)+r("Lịch sử dòng họ",i.history)+r("Gia huấn / tộc ước",i.motto)+`<div style="margin-top:12px"><button class="b s" id="cshr">📤 Chia sẻ</button><button class="b s" id="cno">Đóng</button></div>`;
+ $("#ov").classList.add("on");$("#cno").onclick=closeForm;
+ $("#cshr").onclick=()=>shareText([famTitle(),i.origin&&"Nguồn gốc: "+i.origin,i.hall&&"Nhà thờ họ: "+i.hall,i.head&&"Trưởng họ: "+i.head,i.history&&"\n"+i.history,i.motto&&"\nGia huấn: "+i.motto].filter(Boolean).join("\n"))}
+const PRE=[["Giỗ Tổ họ",0,0],["Họp họ đầu năm",0,0],["Tảo mộ cuối năm",23,12],["Tết Hàn thực",3,3]];
+function openCE(id){const v=id?C.ev.find(x=>x.id===id):{name:"",d:"",m:"",l:1,place:"",note:""};if(!v)return;
+ $("#sh").innerHTML=`<h3 style="margin:0 0 4px">${id?"Sửa":"Thêm"} ngày giỗ / lễ của dòng họ</h3>${id?"":`<div class="sub">Gợi ý nhanh:</div><div class="tbar">${PRE.map((x,i)=>`<button type="button" class="b s" data-pre="${i}">${x[0]}</button>`).join("")}</div>`}
+ <label>Tên (ví dụ: Giỗ Tổ họ)</label><input id="cen" value="${esc(v.name)}">
+ <label>Ngày hằng năm</label><div class="r"><input type="number" inputmode="numeric" min="1" max="31" placeholder="Ngày" id="ced" value="${esc(v.d||"")}"><input type="number" inputmode="numeric" min="1" max="12" placeholder="Tháng" id="cem" value="${esc(v.m||"")}"><select class="w" id="cel"><option value="1"${v.l?" selected":""}>Âm lịch</option><option value="0"${v.l?"":" selected"}>Dương lịch</option></select></div>
+ <label>Địa điểm</label><input id="cep" value="${esc(v.place)}" placeholder="Ví dụ: Nhà thờ họ">
+ <label>Ghi chú</label><textarea id="cet" style="min-height:60px;font:inherit">${esc(v.note)}</textarea>
+ <div style="margin-top:12px"><button class="b" id="cok">Lưu</button>${id?`<button class="b s" id="cshr">📣 Gửi thông báo</button><button class="b d" id="cdel">Xóa</button>`:""}<button class="b s" id="cno">Đóng</button></div>`;
+ $("#ov").classList.add("on");$("#cno").onclick=closeForm;
+ $("#sh").querySelectorAll("[data-pre]").forEach(b=>b.onclick=()=>{const x=PRE[b.dataset.pre];$("#cen").value=x[0];if(x[1]){$("#ced").value=x[1];$("#cem").value=x[2];$("#cel").value="1"}});
+ $("#cok").onclick=()=>{const n=$("#cen").value.trim(),d=+$("#ced").value,m=+$("#cem").value;if(!n||d<1||d>31||m<1||m>12){alert("Hãy nhập tên và ngày tháng hợp lệ.");return}
+  const o={name:n,d,m,l:+$("#cel").value,place:$("#cep").value.trim(),note:$("#cet").value.trim()};
+  if(id)Object.assign(v,o);else C.ev.push({id:uid(),...o});saveClan();closeForm();render()};
+ if($("#cdel"))$("#cdel").onclick=()=>{if(!confirm("Xóa \""+v.name+"\"?"))return;C.ev=C.ev.filter(x=>x.id!==id);saveClan();closeForm();render()};
+ if($("#cshr"))$("#cshr").onclick=()=>{const o=OUT.find(x=>x.e.t==="clan"&&x.e.c.id===id);if(!o){alert("Chưa tính được ngày. Hãy lưu đủ ngày và tháng.");return}
+  shareText("Kính báo: ngày "+o.d+"/"+o.m+"/"+o.y+" dương lịch (ngày "+o.L[0]+"/"+o.L[1]+" âm lịch) là "+v.name+(v.place?" tại "+v.place:"")+"."+(v.note?" "+v.note:"")+" Kính mời con cháu trong họ sắp xếp thời gian về dự."+(FN?" — Dòng họ "+FN:""))}}
+window.addEventListener("afterprint",()=>{delete document.body.dataset.print});
+
+// ---- Điều hướng ----
+function render(){renderRem();renderTree();renderList();nUI();renderTitle();tick()}
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("on",x===b));document.querySelectorAll(".tab").forEach((t,i)=>t.classList.toggle("on",i==b.dataset.t));$("#fab").style.display=b.dataset.t==="4"?"none":"block"});
+$("#fab").onclick=()=>openForm();
+$("#q").oninput=renderList;
+$("#ov").onclick=e=>{if(e.target.id==="ov")closeForm()};
+document.addEventListener("click",e=>{
+ const c=e.target.closest("[data-e]");if(c){const sm=c.parentElement&&c.parentElement.tagName==="SUMMARY";if(sm&&e.clientX>c.getBoundingClientRect().right-40)return;openForm(c.dataset.e);e.preventDefault();return}
+ if(e.target.id==="bfn"){openName();return}
+ if(e.target.id==="bci"){openClan();return}
+ if(e.target.id==="bcv"){openClanView();return}
+ if(e.target.id==="bce"){openCE();return}
+ if(e.target.id==="bps"){document.body.dataset.print="t2";window.print();return}
+ const ce=e.target.closest("[data-ce]");if(ce){openCE(ce.dataset.ce);return}
+ if(e.target.id==="bex"||e.target.id==="bco"){const o=e.target.id==="bex";document.querySelectorAll("#t0 details").forEach(d=>d.open=o);return}
+ if(e.target.id==="bst"){openStats();return}
+ if(e.target.id==="bpr"){document.querySelectorAll("#t0 details").forEach(d=>d.open=true);window.print();return}
+ if(e.target.id==="gobk"){document.querySelector('nav button[data-t="4"]').click();return}
+ if(e.target.id==="demo"){M=[
+  {id:"a1",name:"Nguyễn Văn Tổ",gender:"nam",parentId:"",spouseId:"a2",birth:{d:0,m:0,y:1900},death:{d:15,m:3,y:1975,l:true},hometown:"Nam Định",note:""},
+  {id:"a2",name:"Trần Thị Mão",gender:"nu",parentId:"",spouseId:"a1",birth:{d:0,m:0,y:1905},death:{d:2,m:9,y:1980,l:true},hometown:"Nam Định",note:""},
+  {id:"a3",name:"Nguyễn Văn Cả",gender:"nam",parentId:"a1",spouseId:"a4",birth:{d:12,m:5,y:1930,l:false},death:null,hometown:"Nam Định",note:""},
+  {id:"a4",name:"Lê Thị Hoa",gender:"nu",parentId:"",spouseId:"a3",birth:{d:20,m:8,y:1934,l:true},death:null,hometown:"Thái Bình",note:""},
+  {id:"a5",name:"Nguyễn Thị Lan",gender:"nu",parentId:"a3",spouseId:"",birth:{d:3,m:11,y:1960,l:false},death:null,hometown:"Hà Nội",note:""}];save();render()}});
+if("serviceWorker"in navigator&&location.protocol.indexOf("http")===0&&!(window.Capacitor&&Capacitor.isNativePlatform&&Capacitor.isNativePlatform()))window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
+load();applyTheme();
+let _ld="";
+function tick(){const t=new Date(),k=t.getDate()+"/"+t.getMonth()+"/"+t.getFullYear(),z=n=>String(n).padStart(2,"0");
+ if(k!==_ld){_ld=k;const L=s2l(t.getDate(),t.getMonth()+1,t.getFullYear()),w=["Chủ nhật","Thứ hai","Thứ ba","Thứ tư","Thứ năm","Thứ sáu","Thứ bảy"][t.getDay()];
+  $("#hcw").textContent=w+", "+t.getDate()+"/"+(t.getMonth()+1)+"/"+t.getFullYear();$("#today").textContent="Âm lịch "+L[0]+"/"+L[1]+(L[3]?" nhuận":"")+" năm "+canchi(L[2])}
+ $("#hct").textContent="🕐 "+z(t.getHours())+":"+z(t.getMinutes())+":"+z(t.getSeconds())}
+setInterval(tick,1000);
+// ---- Khóa PIN ----
+const pinH=t=>{let h=5381;for(const c of "gp"+t)h=((h<<5)+h+c.charCodeAt(0))>>>0;return h.toString(36)};
+const gp=()=>{try{return localStorage.getItem("giapha_pin")||""}catch(e){return""}};
+function lockUI(){const on=!!gp();$("#bpin").textContent=on?"Đổi mã PIN":"Đặt mã PIN";$("#bpin0").style.display=on?"inline-block":"none"}
+function showLock(){if(!gp())return;$("#lock").style.display="flex";$("#lpin").value="";$("#lmsg").textContent="";setTimeout(()=>$("#lpin").focus(),50)}
+$("#lok").onclick=()=>{if(pinH($("#lpin").value)===gp())$("#lock").style.display="none";else{$("#lmsg").textContent="Sai mã PIN.";$("#lpin").value=""}};
+$("#lpin").onkeydown=e=>{if(e.key==="Enter")$("#lok").click()};
+$("#bpin").onclick=()=>{const a=prompt("Nhập mã PIN mới (4–8 chữ số):");if(a==null)return;if(!/^\d{4,8}$/.test(a)){setMsg("PIN phải gồm 4–8 chữ số.");return}try{localStorage.setItem("giapha_pin",pinH(a))}catch(e){}lockUI();setMsg("Đã đặt mã PIN.")};
+$("#bpin0").onclick=()=>{if(!confirm("Tắt khóa PIN?"))return;try{localStorage.removeItem("giapha_pin")}catch(e){}lockUI();setMsg("Đã tắt PIN.")};
+let _hid=0;document.addEventListener("visibilitychange",()=>{if(document.hidden)_hid=Date.now();else if(_hid&&Date.now()-_hid>30000)showLock()});
+$("#qk").onchange=renderList;lockUI();showLock();
+render();
+</script>
+</body>
+</html>
