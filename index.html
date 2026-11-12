@@ -7,15 +7,11 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-192.png">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Gia phả">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <title>Gia phả dòng họ</title>
 <style>
-:root{--bg:#faf6ef;--card:#fff;--tx:#2b2118;--mu:#7a6a5a;--ac:#9c2f1f;--ac2:#c99a3b;--bd:#e6dccb;--nam:#3b6ea5;--nu:#b5527a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1814;--card:#2a231d;--tx:#f1e8dc;--mu:#a89a89;--ac:#e0705c;--ac2:#d8ad55;--bd:#403528;--nam:#6ea2dc;--nu:#e083ab;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#1d1814;--card:#2a231d;--tx:#f1e8dc;--mu:#a89a89;--ac:#e0705c;--ac2:#d8ad55;--bd:#403528;--nam:#6ea2dc;--nu:#e083ab;color-scheme:dark}
+:root{--bg:#faf6ef;--card:#fff;--tx:#2b2118;--mu:#7a6a5a;--ac:#9c2f1f;--ac2:#c99a3b;--bd:#e6dccb;--nam:#3b6ea5;--nu:#b5527a;--up:#2e7d32;--dn:#b3261e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1814;--card:#2a231d;--tx:#f1e8dc;--mu:#a89a89;--ac:#e0705c;--ac2:#d8ad55;--bd:#403528;--nam:#6ea2dc;--nu:#e083ab;--up:#6fcf8f;--dn:#ff8a80;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1d1814;--card:#2a231d;--tx:#f1e8dc;--mu:#a89a89;--ac:#e0705c;--ac2:#d8ad55;--bd:#403528;--nam:#6ea2dc;--nu:#e083ab;--up:#6fcf8f;--dn:#ff8a80;color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:90px}
@@ -25,8 +21,8 @@ h1{margin:0;font-size:22px;color:var(--ac)}
 main{padding:8px 12px;max-width:720px;margin:0 auto}
 .tab{display:none}.tab.on{display:block}
 nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--bd);padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
-nav button{flex:1;border:0;background:none;color:var(--mu);padding:9px 2px 7px;font:inherit;font-size:12px}
-nav button b{display:block;font-size:20px;font-weight:400}
+nav button{flex:1;border:0;background:none;color:var(--mu);padding:9px 0 7px;font:inherit;font-size:11px}
+nav button b{display:block;font-size:19px;font-weight:400}
 nav button.on{color:var(--ac);font-weight:600}
 .fab{position:fixed;right:16px;bottom:calc(72px + env(safe-area-inset-bottom,0px));width:56px;height:56px;border-radius:50%;border:0;background:var(--ac);color:#fff;font-size:30px;box-shadow:0 3px 10px #0004;z-index:6}
 ul.t{list-style:none;margin:0;padding-left:14px;border-left:2px dashed var(--bd)}
@@ -57,6 +53,14 @@ textarea{min-height:120px;font:12px monospace}
 .sg{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:10px 0}.sg div{background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:8px;text-align:center}.sg b{display:block;font-size:22px;color:var(--ac)}
 .tbar button.b{padding:6px 10px;font-size:13px;margin:2px 4px 2px 0}
 .hc{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:4px}.hc b{font-size:26px;color:var(--ac);font-variant-numeric:tabular-nums}
+.tag.cl{background:var(--ac2)}.tag.up{background:#2e7d32}.tag.dn{background:#b3261e}
+.mh{font-weight:600;color:var(--mu);font-size:13px;margin:14px 0 2px}
+.am{font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+.sg.f b{font-size:18px}.sg.f .sub{display:block}
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:6px 0}
+.pg>div{aspect-ratio:1;border-radius:8px;background:var(--bd) center/cover no-repeat;position:relative;overflow:hidden;cursor:pointer}
+.pg>div span{position:absolute;left:0;right:0;bottom:0;background:#0008;color:#fff;font-size:11px;padding:2px 5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (min-width:560px){.pg{grid-template-columns:repeat(4,1fr)}}
 @media print{body[data-print="t2"] #t0{display:none!important}body[data-print="t2"] #t2{display:block!important}nav,.fab,.tbar,#bfn,.bn button,#gobk{display:none!important}body{background:#fff;color:#000;padding:0}.tab{display:none!important}#t0{display:block!important}}
 </style>
 </head>
@@ -66,10 +70,22 @@ textarea{min-height:120px;font:12px monospace}
  <section class="tab on" id="t0"></section>
  <section class="tab" id="t1"><div class="r"><input id="q" placeholder="Tìm theo tên, quê quán…" class="w"><select id="qf"><option value="">Tất cả</option><option value="nam">Nam</option><option value="nu">Nữ</option><option value="alive">Còn sống</option><option value="dead">Đã mất</option></select></div><select id="qk" style="margin:6px 0"><option value="">Tìm trong: tất cả thông tin</option><option value="name">Họ tên / tên gọi khác</option><option value="home">Quê quán</option><option value="res">Nơi thường trú</option><option value="addr">Chỗ ở hiện nay</option><option value="job">Nghề nghiệp / chức vụ / học vấn</option><option value="soc">Mối quan hệ xã hội</option></select><div id="list"></div></section>
  <section class="tab" id="t2"></section>
- <section class="tab" id="t3"></section>
+ <section class="tab" id="t3">
+  <div id="fsum"></div>
+  <div class="tbar"><button class="b" id="bft">＋ Khoản thu</button><button class="b s" id="bfc">－ Khoản chi</button><button class="b s" id="bfr">📊 Báo cáo</button></div>
+  <div class="r" style="margin:6px 0"><select id="fy"></select><select id="fk"><option value="">Thu và chi</option><option value="thu">Chỉ khoản thu</option><option value="chi">Chỉ khoản chi</option></select></div>
+  <input id="fq" placeholder="Tìm theo hạng mục, người nộp, ghi chú…">
+  <div id="flist"></div>
+ </section>
  <section class="tab" id="t4">
+  <div class="tbar"><button class="b" id="bpa">＋ Thêm ảnh</button></div>
+  <p class="sub">Ảnh lưu niệm của dòng họ: giỗ tổ, họp họ, tảo mộ, xây nhà thờ… Ảnh được thu nhỏ và lưu trên máy này; nhớ xuất Excel để sao lưu.</p>
+  <select id="pa"></select>
+  <div id="plist"></div>
+ </section>
+ <section class="tab" id="t5">
   <h3>Excel</h3>
-  <p class="sub">Xuất toàn bộ gia phả (kèm ảnh) ra file .xlsx để lưu trữ hoặc chỉnh sửa trong Excel, rồi nhập lại khi cần.</p>
+  <p class="sub">Xuất toàn bộ gia phả (kèm ảnh thành viên), sổ thu chi và ảnh lưu niệm ra file .xlsx (file có thể khá lớn nếu có nhiều ảnh) để lưu trữ hoặc chỉnh sửa trong Excel, rồi nhập lại khi cần.</p>
   <button class="b" id="bxl">Xuất ra file Excel</button>
   <label>Khôi phục từ file Excel (.xlsx)</label><input type="file" id="fxl" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
   <p class="sub">Dữ liệu chỉ lưu trên máy này. Hãy xuất Excel định kỳ để không mất.</p>
@@ -93,11 +109,12 @@ textarea{min-height:120px;font:12px monospace}
 </main>
 <button class="fab" id="fab" aria-label="Thêm thành viên">+</button>
 <nav>
- <button class="on" data-t="0"><b>🌳</b>Cây gia phả</button>
+ <button class="on" data-t="0"><b>🌳</b>Gia phả</button>
  <button data-t="1"><b>👥</b>Thành viên</button>
- <button data-t="2"><b>🔔</b>Ngày giỗ</button>
- <button data-t="3"><b>🎂</b>Sinh nhật</button>
- <button data-t="4"><b>💾</b>Sao lưu</button>
+ <button data-t="2"><b>📅</b>Sự kiện</button>
+ <button data-t="3"><b>💰</b>Thu chi</button>
+ <button data-t="4"><b>🖼</b>Ảnh</button>
+ <button data-t="5"><b>💾</b>Sao lưu</button>
 </nav>
 <div id="lock" style="display:none;position:fixed;inset:0;z-index:50;background:var(--bg);align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:20px"><div style="font-size:44px">🔒</div><b>Gia phả dòng họ</b><input id="lpin" type="password" inputmode="numeric" placeholder="Nhập mã PIN" style="max-width:240px;text-align:center"><button class="b" id="lok">Mở khóa</button><div class="sub" id="lmsg"></div></div>
 <div class="ov" id="ov"><div class="sh" id="sh"></div></div>
@@ -124,10 +141,12 @@ const CAN=["Giáp","Ất","Bính","Đinh","Mậu","Kỷ","Canh","Tân","Nhâm","
 const canchi=y=>CAN[(y+6)%10]+" "+CHI[(y+8)%12];
 
 // ---- Dữ liệu ----
-const KEY="giapha_v1";let M=[],SOON=[],FN="",OUT=[],GIO=[],C=normC(null);
-function load(){try{M=JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){M=[]}try{FN=localStorage.getItem(KEY+"_name")||""}catch(e){}try{C=normC(JSON.parse(localStorage.getItem(KEY+"_clan")||"null"))}catch(e){C=normC(null)}}
+const KEY="giapha_v1";let M=[],SOON=[],FN="",OUT=[],GIO=[],C=normC(null),F=[],PH=[],PLO=[];
+function load(){try{M=JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){M=[]}try{FN=localStorage.getItem(KEY+"_name")||""}catch(e){}try{C=normC(JSON.parse(localStorage.getItem(KEY+"_clan")||"null"))}catch(e){C=normC(null)}try{F=normF(JSON.parse(localStorage.getItem(KEY+"_fin")||"[]"))}catch(e){F=[]}}
 function normC(c){c=c&&typeof c==="object"?c:{};const I={};["origin","hall","head","history","motto"].forEach(k=>I[k]=String((c.info||{})[k]||""));
- return{info:I,ev:(Array.isArray(c.ev)?c.ev:[]).filter(v=>v&&v.name).map(v=>({id:String(v.id||"").replace(/[^\w-]/g,"")||uid(),name:String(v.name),d:+v.d||0,m:+v.m||0,l:v.l?1:0,place:String(v.place||""),note:String(v.note||"")}))}}
+ return{info:I,ev:(Array.isArray(c.ev)?c.ev:[]).filter(v=>v&&v.name).map(v=>({id:String(v.id||"").replace(/[^\w-]/g,"")||uid(),name:String(v.name),d:+v.d||0,m:+v.m||0,l:v.l?1:0,y:+v.y||0,place:String(v.place||""),note:String(v.note||"")}))}}
+function normF(a){return(Array.isArray(a)?a:[]).filter(v=>v&&+v.amt>0&&/^\d{4}-\d{2}-\d{2}$/.test(String(v.d||""))).map(v=>({id:String(v.id||"").replace(/[^\w-]/g,"")||uid(),t:v.t==="chi"?"chi":"thu",d:String(v.d),amt:Math.round(+v.amt),cat:String(v.cat||""),who:String(v.who||""),ev:String(v.ev||""),note:String(v.note||"")}))}
+function saveFin(){try{localStorage.setItem(KEY+"_fin",JSON.stringify(F))}catch(e){}}
 function saveClan(){try{localStorage.setItem(KEY+"_clan",JSON.stringify(C))}catch(e){}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(M));localStorage.setItem(KEY+"_name",FN)}catch(e){}}
 const $=s=>document.querySelector(s),esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -147,18 +166,18 @@ function node(p,g,depth){
 function gioBn(){const ok=o=>o.e.t==="gio"||o.e.t==="clan",A=GIO.length?GIO:OUT.filter(ok).slice(0,1);if(!A.length)return"";
  return `<div class="bn"><b>🕯 Ngày giỗ và lễ ${GIO.length?"sắp tới (trong 30 ngày)":"kế tiếp"}</b>`+A.slice(0,6).map(o=>{const e=o.e,c=e.t==="clan",n=!c&&e.y?o.L[2]-e.y:0;
   return `<div class="bi" ${c?`data-ce="${e.c.id}"`:`data-e="${e.p.id}"`}>${c?"🏯 ":""}${esc(e.p.name)}${n>0?" · giỗ lần thứ "+n:""}${c&&e.c.place?" · "+esc(e.c.place):""} · ${o.i===0?"hôm nay":o.i===1?"ngày mai":"còn "+o.i+" ngày"} · ${o.d}/${o.m} (ÂL ${o.L[0]}/${o.L[1]})</div>`}).join("")+`</div>`}
-function clanCard(){const i=C.info,t=x=>esc(x);
- if(!(i.origin||i.hall||i.head||i.history||i.motto))return `<div class="bn" style="border-color:var(--bd)"><div class="sub">Chưa có mô tả dòng họ (nguồn gốc, nhà thờ họ, lịch sử, gia huấn).</div><button class="b s" id="bci" style="margin-top:6px">📜 Thêm mô tả dòng họ</button></div>`;
- return `<div class="bn" style="border-color:var(--bd)"><b>📜 Giới thiệu dòng họ</b>${i.origin?`<div class="m">🌾 ${t(i.origin)}</div>`:""}${i.hall?`<div class="m">🏯 Nhà thờ họ: ${t(i.hall)}</div>`:""}${i.head?`<div class="m">👤 Trưởng họ: ${t(i.head)}</div>`:""}${i.history?`<div class="sub">${t(i.history.slice(0,160))}${i.history.length>160?"…":""}</div>`:""}<div style="margin-top:6px"><button class="b s" id="bcv">Xem đầy đủ</button><button class="b s" id="bci">✏️ Sửa</button></div></div>`}
+function clanBody(){const i=C.info,t=x=>esc(x);
+ if(!(i.origin||i.hall||i.head||i.history||i.motto))return `<div class="sub" style="margin-top:8px">Chưa có phần giới thiệu dòng họ (nguồn gốc, nhà thờ họ, lịch sử, gia huấn).</div><div class="tbar"><button class="b s" id="bci">📜 Thêm giới thiệu dòng họ</button></div>`;
+ return `<div style="margin-top:8px;padding-top:8px;border-top:1px dashed var(--bd)"><b>📜 Giới thiệu dòng họ</b>${i.origin?`<div class="sub">🌾 ${t(i.origin)}</div>`:""}${i.hall?`<div class="sub">🏯 Nhà thờ họ: ${t(i.hall)}</div>`:""}${i.head?`<div class="sub">👤 Trưởng họ: ${t(i.head)}</div>`:""}${i.history?`<div class="sub">${t(i.history.slice(0,160))}${i.history.length>160?"…":""}</div>`:""}<div class="tbar" style="margin-top:4px"><button class="b s" id="bcv">Xem đầy đủ</button><button class="b s" id="bci">✏️ Sửa</button></div></div>`}
 function bkWarn(){let t=0;try{t=+localStorage.getItem(KEY+"_bk")||0}catch(e){}if(M.length<3||Date.now()-t<30*864e5)return"";return `<div class="bn" style="border-color:var(--ac)"><b>💾 Nhớ sao lưu</b><div class="sub">${t?"Đã hơn 30 ngày chưa xuất file Excel.":"Bạn chưa xuất file Excel lần nào."} Dữ liệu chỉ nằm trên máy này.</div><button class="b" id="gobk" style="margin-top:6px">Sao lưu ngay</button></div>`}
 function banner(){const w=bkWarn();if(!SOON.length)return w;return w+`<div class="bn"><b>🎂 Sắp đến sinh nhật</b>`+SOON.map(o=>{const e=o.e,n=e.y?(e.l?o.L[2]:o.y)-e.y:0;return `<div class="bi" data-e="${e.p.id}">${esc(e.p.name)}${n>0?" ("+n+" tuổi)":""} · ${o.i===0?"hôm nay":o.i===1?"ngày mai":"còn "+o.i+" ngày"} · ${o.d}/${o.m}</div>`}).join("")+`</div>`}
 const famTitle=()=>"Gia phả dòng họ"+(FN?" "+FN:"");
 function renderTitle(){$("#ttl").textContent="🌳 "+famTitle();document.title=famTitle()}
-function titleCard(){return `<div class="bn" style="border-color:var(--bd)"><div style="display:flex;align-items:center;gap:8px"><div style="flex:1"><b>${esc(famTitle())}</b><div class="sub">${M.length} thành viên</div></div><button class="b s" id="bfn" style="margin:0">✏️ Đổi tên</button></div>${M.length?`<div class="tbar" style="margin-top:6px"><button class="b s" id="bex">⊞ Mở hết</button><button class="b s" id="bco">⊟ Thu gọn</button><button class="b s" id="bst">📊 Thống kê</button><button class="b s" id="bpr">🖨 In</button></div>`:""}</div>`}
+function titleCard(){return `<div class="bn" style="border-color:var(--bd)"><div style="display:flex;align-items:center;gap:8px"><div style="flex:1"><b>${esc(famTitle())}</b><div class="sub">${M.length} thành viên</div></div><button class="b s" id="bfn" style="margin:0">✏️ Đổi tên</button></div>${clanBody()}${M.length?`<div class="tbar" style="margin-top:8px;padding-top:8px;border-top:1px dashed var(--bd)"><button class="b s" id="bex">⊞ Mở hết</button><button class="b s" id="bco">⊟ Thu gọn</button><button class="b s" id="bst">📊 Thống kê</button><button class="b s" id="bpr">🖨 In</button></div>`:""}</div>`}
 function openName(){$("#sh").innerHTML='<h3 style="margin:0 0 4px">Tên gia phả dòng họ</h3><label>Tên dòng họ (ví dụ: Đinh)</label><input id="fnm" placeholder="Đinh" value="'+esc(FN)+'"><div style="margin-top:12px"><button class="b" id="okn">Lưu</button><button class="b s" id="non">Đóng</button></div>';$("#ov").classList.add("on");$("#non").onclick=closeForm;$("#okn").onclick=()=>{FN=$("#fnm").value.trim().replace(/^(gia ph[ảa][ ]*)?(d[òo]ng h[ọo][ ]*)?/i,"");save();closeForm();render()};setTimeout(()=>$("#fnm").focus(),50)}
 function renderTree(){
- if(!M.length){$("#t0").innerHTML=titleCard()+clanCard()+`<div class="emp">Chưa có thành viên nào.<br>Bấm nút <b>+</b> để thêm vị tổ đầu tiên.<br><br><button class="b s" id="demo">Nạp dữ liệu mẫu</button></div>`;return}
- const roots=M.filter(isRoot);$("#t0").innerHTML=titleCard()+clanCard()+gioBn()+banner()+`<ul class="t root">${roots.map(r=>node(r,1,0)).join("")}</ul>`}
+ if(!M.length){$("#t0").innerHTML=titleCard()+`<div class="emp">Chưa có thành viên nào.<br>Bấm nút <b>+</b> để thêm vị tổ đầu tiên.<br><br><button class="b s" id="demo">Nạp dữ liệu mẫu</button></div>`;return}
+ const roots=M.filter(isRoot);$("#t0").innerHTML=titleCard()+gioBn()+banner()+`<ul class="t root">${roots.map(r=>node(r,1,0)).join("")}</ul>`}
 
 // ---- Danh sách ----
 const nz=t=>String(t==null?"":t).normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/đ/gi,"d").toLowerCase();
@@ -182,17 +201,8 @@ function renderRem(){
  for(let i=0;i<366;i++){
   const dt=new Date(t0.getTime()+i*864e5),d=dt.getDate(),m=dt.getMonth()+1,y=dt.getFullYear(),L=s2l(d,m,y);
   const ev=[...(L[3]?[]:lm[L[1]!=null?L[0]+"/"+L[1]:""]||[]),...(sm[d+"/"+m]||[])];
-  ev.forEach(e=>out.push({i,d,m,y,L,e}))}
- const draw=(sel,t,intro,emp)=>{const A=out.filter(o=>(o.e.t===t||(t==="gio"&&o.e.t==="clan"))&&(t==="gio"||!o.e.p.death));$(sel).innerHTML=`<p class="sub">${intro}</p>`+(A.length?A.map(o=>{
-  const e=o.e,n=e.t==="gio"?(e.y?o.L[2]-e.y:0):(e.y?(e.l?o.L[2]:o.y)-e.y:0);
-  const when=o.i===0?"Hôm nay":o.i===1?"Ngày mai":"Còn "+o.i+" ngày";
-  return `<div class="ev" ${e.t==="clan"?`data-ce="${e.c.id}"`:`data-e="${e.p.id}"`} style="${o.i<=7?"border:2px solid var(--ac2)":""}"><div class="dt"><b>${o.d}/${o.m}</b>${o.y}</div><div style="flex:1"><div><span class="tag ${e.t==="bd"?"bd":""}">${e.t==="gio"?"Ngày giỗ":e.t==="clan"?"Giỗ/lễ họ":"Sinh nhật"}</span> <b>${esc(e.p.name)}</b></div><div class="sub">Âm lịch ${o.L[0]}/${o.L[1]}${n>0?" · "+(e.t==="gio"?"giỗ lần thứ "+n:n+" tuổi"):""} · ${when}${e.t==="clan"&&e.c.place?" · "+esc(e.c.place):""}</div></div></div>`}).join(""):`<div class="emp">${emp}</div>`)};
- draw("#t2","gio","Giỗ của các thành viên và giỗ/lễ chung của dòng họ trong 12 tháng tới (tính theo âm lịch).","Chưa có ngày giỗ nào. Hãy nhập ngày mất cho thành viên đã khuất, hoặc thêm ngày giỗ/lễ của dòng họ.");
- draw("#t3","bd","Sinh nhật của các thành viên còn sống trong 12 tháng tới. Khung vàng là trong vòng 7 ngày.","Chưa có sinh nhật nào. Hãy nhập ngày sinh cho thành viên.");
- $("#t2").insertAdjacentHTML("afterbegin",`<div class="tbar"><button class="b s" id="bce">＋ Ngày giỗ / lễ của dòng họ</button><button class="b s" id="bps">🖨 In sổ giỗ</button></div>`);
- const Y0=new Date().getFullYear(),TN={60:"Lục tuần",70:"Thất tuần",80:"Bát tuần",90:"Cửu tuần",100:"Bách niên"},TH=M.filter(p=>!p.death&&p.birth&&p.birth.y&&TN[Y0-p.birth.y+1]);
- if(TH.length)$("#t3").insertAdjacentHTML("beforeend",`<h3>🎂 Mừng thọ năm ${Y0}</h3><p class="sub">Tính theo tuổi ta (năm nay − năm sinh + 1).</p>`+TH.map(p=>`<div class="ev" data-e="${p.id}"><div style="flex:1"><b>${esc(p.name)}</b><div class="sub">${TN[Y0-p.birth.y+1]} · tròn ${Y0-p.birth.y+1} tuổi (sinh năm ${p.birth.y})</div></div></div>`).join(""));
- SOON=out.filter(o=>o.e.t==="bd"&&!o.e.p.death&&o.i<=7);OUT=out;GIO=out.filter(o=>(o.e.t==="gio"||o.e.t==="clan")&&o.i<=30);schedNotif(out)}
+  ev.filter(e=>!(e.t==="clan"&&e.c.y)||(e.l?L[2]:y)===e.c.y).forEach(e=>out.push({i,d,m,y,L,e}))}
+ SOON=out.filter(o=>o.e.t==="bd"&&!o.e.p.death&&o.i<=7);OUT=out;GIO=out.filter(o=>(o.e.t==="gio"||o.e.t==="clan")&&o.i<=30);renderEvents();schedNotif(out)}
 
 // ---- Form ----
 const dr=(k,v)=>`<div class="r"><input type="number" inputmode="numeric" min="1" max="31" placeholder="Ngày" id="${k}d" value="${esc(v.d||"")}"><input type="number" inputmode="numeric" min="1" max="12" placeholder="Tháng" id="${k}m" value="${esc(v.m||"")}"><input type="number" inputmode="numeric" placeholder="Năm" id="${k}y" value="${esc(v.y||"")}"><select class="w" id="${k}l"><option value="0"${v.l?"":" selected"}>Dương lịch</option><option value="1"${v.l?" selected":""}>Âm lịch</option></select></div>`;
@@ -256,7 +266,7 @@ function setMsg(t){$("#msg").textContent=t}
 
 
 
-$("#bclr").onclick=()=>{if(confirm("Xóa toàn bộ dữ liệu? Không thể hoàn tác.")){M=[];save();render();setMsg("Đã xóa.")}};
+$("#bclr").onclick=async()=>{if(confirm("Xóa toàn bộ thành viên, sổ thu chi và ảnh lưu niệm? Không thể hoàn tác.")){M=[];F=[];PH=[];saveFin();try{await dbt(["photos","full"],"readwrite",(a,b)=>{a.clear();return b.clear()})}catch(e){}save();render();setMsg("Đã xóa.")}};
 
 // ---- Ảnh ----
 function readPhoto(f,cb){const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const S=200,c=document.createElement("canvas");c.width=c.height=S;const m=Math.min(im.width,im.height);c.getContext("2d").drawImage(im,(im.width-m)/2,(im.height-m)/2,m,m,0,0,S,S);cb(c.toDataURL("image/jpeg",0.72))};im.onerror=()=>cb("");im.src=r.result};r.readAsDataURL(f)}
@@ -267,7 +277,7 @@ async function saveFile(name,blob){
  if(C&&C.isNativePlatform&&C.isNativePlatform()&&F&&S){
   const b64=await new Promise(res=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(",")[1]);r.readAsDataURL(blob)});
   const w=await F.writeFile({path:name,data:b64,directory:"CACHE"});
-  await S.share({title:name,url:w.uri,dialogTitle:"Lưu hoặc gửi file Excel"});return "ok"}
+  await S.share({title:name,url:w.uri,dialogTitle:"Lưu hoặc gửi file"});return "ok"}
  try{const d=window.claude&&window.claude.use?await window.claude.use("downloads"):null;if(d){await d.save({filename:name,data:blob});return "ok"}}catch(e){if(e&&e.code==="declined")return "declined"}
  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();return "ok"}
 
@@ -288,21 +298,42 @@ const col=i=>{let s="";i++;while(i>0){const m=(i-1)%26;s=String.fromCharCode(65+
 const xe=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 function sheet(rows){return XML+'<worksheet xmlns="'+NS+'spreadsheetml/2006/main"><sheetData>'+rows.map((r,i)=>'<row r="'+(i+1)+'">'+r.map((v,j)=>{const ref=col(j)+(i+1);return v===""||v==null?"":typeof v==="number"?'<c r="'+ref+'"><v>'+v+'</v></c>':'<c r="'+ref+'" t="inlineStr"><is><t xml:space="preserve">'+xe(v)+'</t></is></c>'}).join("")+'</row>').join("")+'</sheetData></worksheet>'}
 function toRows(){const n=v=>v?+v:"";return [XH,...M.map((p,i)=>{const s=byId(p.spouseId),f=byId(p.parentId),b=p.birth||{},x=p.death||{};return [p.id,p.name,p.alias||"",p.gender==="nu"?"Nữ":"Nam",f?f.name:"",p.parentId||"",s?s.name:"",p.spouseId||"",n(b.d),n(b.m),n(b.y),b.l?"Âm lịch":"Dương lịch",p.death?"Có":"Không",n(x.d),n(x.m),n(x.y),p.death?(x.l?"Âm lịch":"Dương lịch"):"",p.hometown||"",p.residence||"",p.address||"",p.phone||"",p.note||"",p.photo||"",i===0?FN:"",p.cccd||"",p.edu||"",p.job||"",p.pos||"",p.soc||"",p.grave||"",i===0?JSON.stringify(C):""]})]}
-function xlsx(){const R=NS+'package/2006/relationships',O=NS+'officeDocument/2006/relationships';return zip([
- ['[Content_Types].xml',XML+'<Types xmlns="'+NS+'package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/></Types>'],
+const FX=["ID","Loại","Ngày","Số tiền","Hạng mục","Người đóng góp / nhận","Sự kiện","Ghi chú"],PX=["ID","Album","Tiêu đề","Thời gian","Ghi chú","Thứ tự","Phần","Dữ liệu ảnh (base64)"];
+const finRows=()=>[FX,...F.map(x=>[x.id,x.t==="thu"?"Thu":"Chi",x.d,x.amt,x.cat,x.who,x.ev,x.note])];
+async function photoRows(){const R=[PX];
+ for(const m of PH.slice().sort((a,b)=>a.ts-b.ts)){let d="";try{const r=await dbt(["full"],"readonly",s=>s.get(m.id));d=r&&r.data||""}catch(e){}if(!d)continue;
+  for(let i=0,k=1;i<d.length;i+=30000,k++)R.push(k===1?[m.id,m.album,m.title,m.date,m.cap,m.ts,k,d.slice(i,i+30000)]:[m.id,"","","","","",k,d.slice(i,i+30000)])}
+ return R}
+async function xlsx(){const R=NS+'package/2006/relationships',O=NS+'officeDocument/2006/relationships',pr=await photoRows(),WS="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml";return zip([
+ ['[Content_Types].xml',XML+'<Types xmlns="'+NS+'package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="'+WS+'"/><Override PartName="/xl/worksheets/sheet2.xml" ContentType="'+WS+'"/><Override PartName="/xl/worksheets/sheet3.xml" ContentType="'+WS+'"/></Types>'],
  ['_rels/.rels',XML+'<Relationships xmlns="'+R+'"><Relationship Id="rId1" Type="'+O+'/officeDocument" Target="xl/workbook.xml"/></Relationships>'],
- ['xl/workbook.xml',XML+'<workbook xmlns="'+NS+'spreadsheetml/2006/main" xmlns:r="'+O+'"><sheets><sheet name="Gia pha" sheetId="1" r:id="rId1"/></sheets></workbook>'],
- ['xl/_rels/workbook.xml.rels',XML+'<Relationships xmlns="'+R+'"><Relationship Id="rId1" Type="'+O+'/worksheet" Target="worksheets/sheet1.xml"/></Relationships>'],
- ['xl/worksheets/sheet1.xml',sheet(toRows())]])}
+ ['xl/workbook.xml',XML+'<workbook xmlns="'+NS+'spreadsheetml/2006/main" xmlns:r="'+O+'"><sheets><sheet name="Gia pha" sheetId="1" r:id="rId1"/><sheet name="Thu chi" sheetId="2" r:id="rId2"/><sheet name="Anh luu niem" sheetId="3" r:id="rId3"/></sheets></workbook>'],
+ ['xl/_rels/workbook.xml.rels',XML+'<Relationships xmlns="'+R+'"><Relationship Id="rId1" Type="'+O+'/worksheet" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="'+O+'/worksheet" Target="worksheets/sheet2.xml"/><Relationship Id="rId3" Type="'+O+'/worksheet" Target="worksheets/sheet3.xml"/></Relationships>'],
+ ['xl/worksheets/sheet1.xml',sheet(toRows())],['xl/worksheets/sheet2.xml',sheet(finRows())],['xl/worksheets/sheet3.xml',sheet(pr)]])}
 async function inflate(u){return new Uint8Array(await new Response(new Blob([u]).stream().pipeThrough(new DecompressionStream("deflate-raw"))).arrayBuffer())}
 async function unzip(buf){const v=new DataView(buf),u=new Uint8Array(buf),D=new TextDecoder(),out={};let e=buf.byteLength-22;while(e>=0&&v.getUint32(e,true)!==0x06054b50)e--;if(e<0)throw 0;
  const n=v.getUint16(e+10,true);let p=v.getUint32(e+16,true);
  for(let i=0;i<n;i++){const m=v.getUint16(p+10,true),cs=v.getUint32(p+20,true),nl=v.getUint16(p+28,true),el=v.getUint16(p+30,true),cl=v.getUint16(p+32,true),lo=v.getUint32(p+42,true),name=D.decode(u.subarray(p+46,p+46+nl)),ds=lo+30+v.getUint16(lo+26,true)+v.getUint16(lo+28,true),raw=u.subarray(ds,ds+cs);
   if(/^xl\/(worksheets\/sheet[0-9]+|sharedStrings)\.xml$/.test(name))out[name]=D.decode(m===0?raw:await inflate(raw));p+=46+nl+el+cl}return out}
-async function readXlsx(buf){const z=await unzip(buf),P=new DOMParser(),sk=Object.keys(z).filter(k=>k.includes("worksheets")).sort()[0];if(!sk)throw 0;
- const ss=z["xl/sharedStrings.xml"]?[...P.parseFromString(z["xl/sharedStrings.xml"],"application/xml").getElementsByTagName("si")].map(si=>[...si.getElementsByTagName("t")].map(t=>t.textContent).join("")):[],rows=[];
- [...P.parseFromString(z[sk],"application/xml").getElementsByTagName("row")].forEach(r=>{const a=[];[...r.getElementsByTagName("c")].forEach(c=>{const ref=(c.getAttribute("r")||"").replace(/[0-9]/g,""),t=c.getAttribute("t"),ve=c.getElementsByTagName("v")[0];let ci=0;for(const ch of ref)ci=ci*26+ch.charCodeAt(0)-64;ci--;let val="";
-  if(t==="inlineStr")val=[...c.getElementsByTagName("t")].map(x=>x.textContent).join("");else if(ve)val=t==="s"?ss[+ve.textContent]||"":ve.textContent;a[ci>=0?ci:a.length]=val});rows.push(a)});return rows}
+async function readXlsx(buf){const z=await unzip(buf),P=new DOMParser(),num=k=>+(k.match(/sheet(\d+)\.xml$/)||[0,0])[1],ks=Object.keys(z).filter(k=>/worksheets\/sheet\d+\.xml$/.test(k)).sort((a,b)=>num(a)-num(b));if(!ks.length)throw 0;
+ const ss=z["xl/sharedStrings.xml"]?[...P.parseFromString(z["xl/sharedStrings.xml"],"application/xml").getElementsByTagName("si")].map(si=>[...si.getElementsByTagName("t")].map(t=>t.textContent).join("")):[];
+ return ks.map(sk=>{const rows=[];
+  [...P.parseFromString(z[sk],"application/xml").getElementsByTagName("row")].forEach(r=>{const a=[];[...r.getElementsByTagName("c")].forEach(c=>{const ref=(c.getAttribute("r")||"").replace(/[0-9]/g,""),t=c.getAttribute("t"),ve=c.getElementsByTagName("v")[0];let ci=0;for(const ch of ref)ci=ci*26+ch.charCodeAt(0)-64;ci--;let val="";
+   if(t==="inlineStr")val=[...c.getElementsByTagName("t")].map(x=>x.textContent).join("");else if(ve)val=t==="s"?ss[+ve.textContent]||"":ve.textContent;a[ci>=0?ci:a.length]=val});rows.push(a)});return rows})}
+const hasH=(rows,k)=>(rows[0]||[]).some(x=>String(x||"").trim()===k);
+function fixDate(v){v=String(v||"").trim();if(/^\d{4}-\d{2}-\d{2}$/.test(v))return v;let m=v.match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})$/);const z=n=>String(n).padStart(2,"0");if(m)return m[3]+"-"+z(m[2])+"-"+z(m[1]);
+ if(/^\d{5}(\.\d+)?$/.test(v)){const d=new Date(Date.UTC(1899,11,30)+Math.floor(+v)*864e5);return d.getUTCFullYear()+"-"+z(d.getUTCMonth()+1)+"-"+z(d.getUTCDate())}return""}
+function rowsToFin(rows){const h=(rows[0]||[]).map(x=>String(x||"").trim()),g=(r,k)=>{const i=h.indexOf(k);return i<0||r[i]==null?"":String(r[i]).trim()};
+ return normF(rows.slice(1).map(r=>{const a=g(r,"Số tiền");return{id:g(r,"ID"),t:/^chi/i.test(g(r,"Loại"))?"chi":"thu",d:fixDate(g(r,"Ngày")),amt:/^\d+(\.\d+)?$/.test(a)?Math.round(+a):+a.replace(/\D/g,"")||0,cat:g(r,"Hạng mục"),who:g(r,"Người đóng góp / nhận"),ev:g(r,"Sự kiện"),note:g(r,"Ghi chú")}}))}
+async function importPhotos(rows){const h=(rows[0]||[]).map(x=>String(x||"").trim()),ix=k=>h.indexOf(k),g=(r,k)=>{const i=ix(k);return i<0||r[i]==null?"":String(r[i]).trim()},mp={};
+ rows.slice(1).forEach(r=>{const id=g(r,"ID").replace(/[^\w-]/g,"");if(!id)return;const o=mp[id]=mp[id]||{id,album:"",title:"",date:"",cap:"",ts:0,parts:[]};
+  if(g(r,"Album"))o.album=g(r,"Album");if(g(r,"Tiêu đề"))o.title=g(r,"Tiêu đề");if(g(r,"Thời gian"))o.date=g(r,"Thời gian");if(g(r,"Ghi chú"))o.cap=g(r,"Ghi chú");if(+g(r,"Thứ tự"))o.ts=+g(r,"Thứ tự");
+  o.parts.push([+g(r,"Phần")||o.parts.length+1,g(r,"Dữ liệu ảnh (base64)")])});
+ const list=Object.values(mp).map(o=>({...o,data:o.parts.sort((a,b)=>a[0]-b[0]).map(p=>p[1]).join("")})).filter(o=>/^data:image\/(jpeg|png|webp|gif);base64,[A-Za-z0-9+\/=]+$/.test(o.data));
+ await dbt(["photos","full"],"readwrite",(a,b)=>{a.clear();return b.clear()});const out=[];
+ for(const o of list){try{const im=await loadSrc(o.data),m={id:o.id,album:o.album,title:o.title,date:o.date,cap:o.cap,ts:o.ts||Date.now(),th:scale(im,360,.7)};
+  await dbt(["photos","full"],"readwrite",(a,b)=>{a.put(m);return b.put({id:o.id,data:o.data})});out.push(m)}catch(e){}}
+ PH=out;return out.length}
 function rowsToM(rows){const h=(rows[0]||[]).map(x=>String(x||"").trim()),ix=k=>h.indexOf(k);if(ix("Họ và tên")<0)throw 0;
  const g=(r,k)=>{const i=ix(k);return i<0||r[i]==null?"":String(r[i]).trim()},nm=(r,k)=>+g(r,k)||0,lu=v=>/^(âm|am)/i.test(v);
  const A=rows.slice(1).filter(r=>g(r,"Họ và tên")).map(r=>{const mt=g(r,"Đã mất"),d={d:nm(r,"Mất - Ngày"),m:nm(r,"Mất - Tháng"),y:nm(r,"Mất - Năm"),l:lu(g(r,"Mất - Lịch"))},dead=/^(có|co|x|1|true|yes)/i.test(mt)||(!mt&&(d.d||d.m||d.y)),im=g(r,"Ảnh (base64)");
@@ -310,10 +341,15 @@ function rowsToM(rows){const h=(rows[0]||[]).map(x=>String(x||"").trim()),ix=k=>
  const ids=new Set(A.map(x=>x.p.id)),byN=n=>{const f=n&&A.find(x=>x.p.name===n);return f?f.p.id:""};
  A.forEach(({r,p})=>{const pi=g(r,"ID cha/mẹ"),si=g(r,"ID vợ/chồng");p.parentId=ids.has(pi)?pi:byN(g(r,"Tên cha/mẹ"));p.spouseId=ids.has(si)?si:byN(g(r,"Tên vợ/chồng"));if(p.parentId===p.id)p.parentId="";if(p.spouseId===p.id)p.spouseId=""});
  const L=A.map(x=>x.p);L.forEach(p=>{const s=L.find(x=>x.id===p.spouseId);if(s&&!s.spouseId)s.spouseId=p.id});const ti=ix("Tên gia phả"),tv=ti<0?null:rows.slice(1).map(r=>r[ti]).find(v=>v&&String(v).trim());L.fam=tv?String(tv).trim():"";const ci=ix("Dữ liệu dòng họ"),cv=ci<0?null:rows.slice(1).map(r=>r[ci]).find(v=>v&&String(v).trim());try{L.clan=cv?normC(JSON.parse(cv)):null}catch(e){L.clan=null}return L}
-$("#bxl").onclick=async()=>{if(!M.length){setMsg("Chưa có dữ liệu để xuất.");return}
- try{const r=await saveFile("gia-pha-"+new Date().toISOString().slice(0,10)+".xlsx",xlsx());if(r==="ok"){try{localStorage.setItem(KEY+"_bk",Date.now())}catch(e){}render()}setMsg(r==="ok"?"Đã tạo file Excel.":"Bạn đã hủy lưu file.")}catch(e){setMsg("Không xuất được file Excel.")}};
+$("#bxl").onclick=async()=>{if(!M.length&&!F.length&&!PH.length){setMsg("Chưa có dữ liệu để xuất.");return}
+ try{setMsg("Đang tạo file Excel…");const r=await saveFile("gia-pha-"+new Date().toISOString().slice(0,10)+".xlsx",await xlsx());if(r==="ok"){try{localStorage.setItem(KEY+"_bk",Date.now())}catch(e){}render()}setMsg(r==="ok"?"Đã tạo file Excel (gồm gia phả, thu chi và ảnh lưu niệm).":"Bạn đã hủy lưu file.")}catch(e){setMsg("Không xuất được file Excel.")}};
 $("#fxl").onchange=async e=>{const f=e.target.files[0];e.target.value="";if(!f)return;
- try{const L=rowsToM(await readXlsx(await f.arrayBuffer()));if(!L.length)throw 0;if(M.length&&!confirm("Thay toàn bộ dữ liệu hiện tại bằng "+L.length+" thành viên trong file Excel?"))return;M=L;if(L.fam)FN=L.fam;if(L.clan){C=L.clan;saveClan()}save();render();setMsg("Đã khôi phục "+L.length+" thành viên từ Excel.")}catch(err){setMsg("Không đọc được file Excel. Hãy dùng file do app này xuất ra.")}};
+ try{const S=await readXlsx(await f.arrayBuffer()),L=rowsToM(S[0]);if(!L.length)throw 0;
+  const sf=S.find((r,i)=>i>0&&hasH(r,"Số tiền")),sp=S.find((r,i)=>i>0&&hasH(r,"Dữ liệu ảnh (base64)")),nf=sf?rowsToFin(sf):null;
+  if((M.length||F.length||PH.length)&&!confirm("Thay toàn bộ dữ liệu hiện tại bằng "+L.length+" thành viên"+(nf?", "+nf.length+" khoản thu chi":"")+(sp?" và ảnh lưu niệm":"")+" trong file Excel?"))return;
+  M=L;if(L.fam)FN=L.fam;if(L.clan){C=L.clan;saveClan()}if(nf){F=nf;saveFin()}
+  let np=0;if(sp){setMsg("Đang nhập ảnh…");np=await importPhotos(sp)}
+  save();render();renderAlbum();setMsg("Đã khôi phục "+L.length+" thành viên"+(nf?", "+nf.length+" khoản thu chi":"")+(sp?", "+np+" ảnh":"")+" từ Excel.")}catch(err){setMsg("Không đọc được file Excel. Hãy dùng file do app này xuất ra.")}};
 
 // ---- Thông báo (chỉ hoạt động trong bản APK) ----
 const LN=()=>{const C=window.Capacitor;return C&&C.isNativePlatform&&C.isNativePlatform()&&C.Plugins&&C.Plugins.LocalNotifications};
@@ -336,7 +372,7 @@ async function schedNotif(out){
   if(ns.length)await P.schedule({notifications:ns})
  }catch(e){}}
 function nUI(){const P=LN(),b=$("#bnot"),s=$("#nst");
- if(!P){s.textContent="Tính năng này chỉ hoạt động trong bản APK cài trên điện thoại. Trên trình duyệt, hãy mở tab Ngày giỗ và Sinh nhật để xem lịch.";b.style.display="none";return}
+ if(!P){s.textContent="Tính năng này chỉ hoạt động trong bản APK cài trên điện thoại. Trên trình duyệt, hãy mở tab Sự kiện để xem lịch giỗ và sinh nhật.";b.style.display="none";return}
  s.textContent=nOn()?"Đang bật: nhắc lúc 7:00 sáng vào ngày sinh nhật và ngày giỗ, cùng 18:00 chiều hôm trước ngày giỗ.":"Đang tắt.";b.textContent=nOn()?"Tắt nhắc":"Bật nhắc trên điện thoại"}
 $("#bnot").onclick=async()=>{const P=LN();if(!P)return;
  if(nOn()){try{localStorage.setItem("giapha_notif","0")}catch(e){}try{const p=await P.getPending();if(p.notifications.length)await P.cancel({notifications:p.notifications})}catch(e){}nUI();return}
@@ -415,27 +451,156 @@ function openClanView(){const i=C.info,r=(l,v)=>v?`<label>${l}</label><div style
  $("#ov").classList.add("on");$("#cno").onclick=closeForm;
  $("#cshr").onclick=()=>shareText([famTitle(),i.origin&&"Nguồn gốc: "+i.origin,i.hall&&"Nhà thờ họ: "+i.hall,i.head&&"Trưởng họ: "+i.head,i.history&&"\n"+i.history,i.motto&&"\nGia huấn: "+i.motto].filter(Boolean).join("\n"))}
 const PRE=[["Giỗ Tổ họ",0,0],["Họp họ đầu năm",0,0],["Tảo mộ cuối năm",23,12],["Tết Hàn thực",3,3]];
-function openCE(id){const v=id?C.ev.find(x=>x.id===id):{name:"",d:"",m:"",l:1,place:"",note:""};if(!v)return;
- $("#sh").innerHTML=`<h3 style="margin:0 0 4px">${id?"Sửa":"Thêm"} ngày giỗ / lễ của dòng họ</h3>${id?"":`<div class="sub">Gợi ý nhanh:</div><div class="tbar">${PRE.map((x,i)=>`<button type="button" class="b s" data-pre="${i}">${x[0]}</button>`).join("")}</div>`}
+function openCE(id){const v=id?C.ev.find(x=>x.id===id):{name:"",d:"",m:"",l:1,y:0,place:"",note:""};if(!v)return;
+ $("#sh").innerHTML=`<h3 style="margin:0 0 4px">${id?"Sửa":"Thêm"} sự kiện / giỗ tổ / lễ của dòng họ</h3>${id?"":`<div class="sub">Gợi ý nhanh:</div><div class="tbar">${PRE.map((x,i)=>`<button type="button" class="b s" data-pre="${i}">${x[0]}</button>`).join("")}</div>`}
  <label>Tên (ví dụ: Giỗ Tổ họ)</label><input id="cen" value="${esc(v.name)}">
  <label>Ngày hằng năm</label><div class="r"><input type="number" inputmode="numeric" min="1" max="31" placeholder="Ngày" id="ced" value="${esc(v.d||"")}"><input type="number" inputmode="numeric" min="1" max="12" placeholder="Tháng" id="cem" value="${esc(v.m||"")}"><select class="w" id="cel"><option value="1"${v.l?" selected":""}>Âm lịch</option><option value="0"${v.l?"":" selected"}>Dương lịch</option></select></div>
+ <label>Năm (chỉ điền nếu chỉ diễn ra một lần, để trống nếu hằng năm)</label><input type="number" inputmode="numeric" id="cey" placeholder="Ví dụ: 2027" value="${esc(v.y||"")}">
  <label>Địa điểm</label><input id="cep" value="${esc(v.place)}" placeholder="Ví dụ: Nhà thờ họ">
  <label>Ghi chú</label><textarea id="cet" style="min-height:60px;font:inherit">${esc(v.note)}</textarea>
  <div style="margin-top:12px"><button class="b" id="cok">Lưu</button>${id?`<button class="b s" id="cshr">📣 Gửi thông báo</button><button class="b d" id="cdel">Xóa</button>`:""}<button class="b s" id="cno">Đóng</button></div>`;
  $("#ov").classList.add("on");$("#cno").onclick=closeForm;
  $("#sh").querySelectorAll("[data-pre]").forEach(b=>b.onclick=()=>{const x=PRE[b.dataset.pre];$("#cen").value=x[0];if(x[1]){$("#ced").value=x[1];$("#cem").value=x[2];$("#cel").value="1"}});
  $("#cok").onclick=()=>{const n=$("#cen").value.trim(),d=+$("#ced").value,m=+$("#cem").value;if(!n||d<1||d>31||m<1||m>12){alert("Hãy nhập tên và ngày tháng hợp lệ.");return}
-  const o={name:n,d,m,l:+$("#cel").value,place:$("#cep").value.trim(),note:$("#cet").value.trim()};
+  const o={name:n,d,m,l:+$("#cel").value,y:+$("#cey").value||0,place:$("#cep").value.trim(),note:$("#cet").value.trim()};
   if(id)Object.assign(v,o);else C.ev.push({id:uid(),...o});saveClan();closeForm();render()};
  if($("#cdel"))$("#cdel").onclick=()=>{if(!confirm("Xóa \""+v.name+"\"?"))return;C.ev=C.ev.filter(x=>x.id!==id);saveClan();closeForm();render()};
  if($("#cshr"))$("#cshr").onclick=()=>{const o=OUT.find(x=>x.e.t==="clan"&&x.e.c.id===id);if(!o){alert("Chưa tính được ngày. Hãy lưu đủ ngày và tháng.");return}
   shareText("Kính báo: ngày "+o.d+"/"+o.m+"/"+o.y+" dương lịch (ngày "+o.L[0]+"/"+o.L[1]+" âm lịch) là "+v.name+(v.place?" tại "+v.place:"")+"."+(v.note?" "+v.note:"")+" Kính mời con cháu trong họ sắp xếp thời gian về dự."+(FN?" — Dòng họ "+FN:""))}}
 window.addEventListener("afterprint",()=>{delete document.body.dataset.print});
 
+// ---- Sự kiện (giỗ, giỗ tổ / lễ họ, sinh nhật) ----
+let EVF="";
+function renderEvents(){
+ const L=OUT.filter(o=>!(o.e.t==="bd"&&o.e.p.death)),cnt=t=>L.filter(o=>o.e.t===t).length,
+  chips=[["","Tất cả",L.length],["gio","🕯 Giỗ",cnt("gio")],["clan","🏯 Giỗ tổ / lễ họ",cnt("clan")],["bd","🎂 Sinh nhật",cnt("bd")]],
+  A=EVF?L.filter(o=>o.e.t===EVF):L,lab={gio:"Giỗ",clan:"Giỗ tổ / lễ họ",bd:"Sinh nhật"};
+ let last="";
+ const rows=A.map(o=>{const e=o.e,mk=o.m+"/"+o.y,h=mk!==last?`<div class="mh">Tháng ${o.m}/${o.y}</div>`:"";last=mk;
+  const n=e.t==="gio"?(e.y?o.L[2]-e.y:0):e.t==="bd"?(e.y?(e.l?o.L[2]:o.y)-e.y:0):0,
+   when=o.i===0?"Hôm nay":o.i===1?"Ngày mai":"Còn "+o.i+" ngày";
+  return h+`<div class="ev" ${e.t==="clan"?`data-ce="${e.c.id}"`:`data-e="${e.p.id}"`} style="${o.i<=7?"border:2px solid var(--ac2)":""}"><div class="dt"><b>${o.d}/${o.m}</b>${o.y}</div><div style="flex:1"><div><span class="tag ${e.t==="bd"?"bd":e.t==="clan"?"cl":""}">${lab[e.t]}</span> <b>${esc(e.p.name)}</b></div><div class="sub">Âm lịch ${o.L[0]}/${o.L[1]}${n>0?" · "+(e.t==="gio"?"giỗ lần thứ "+n:n+" tuổi"):""} · ${when}${e.t==="clan"&&e.c.place?" · "+esc(e.c.place):""}</div></div></div>`}).join("");
+ const emp={"":"Chưa có sự kiện nào. Hãy nhập ngày sinh, ngày mất cho thành viên, hoặc thêm giỗ tổ / lễ của dòng họ.",gio:"Chưa có ngày giỗ nào. Hãy nhập ngày mất cho thành viên đã khuất.",clan:"Chưa có giỗ tổ / lễ của dòng họ. Bấm nút thêm sự kiện ở trên.",bd:"Chưa có sinh nhật nào. Hãy nhập ngày sinh cho thành viên."};
+ let h=`<div class="tbar"><button class="b" id="bce">＋ Sự kiện / giỗ tổ của họ</button><button class="b s" id="bps">🖨 In danh sách</button></div>`+
+  `<div class="tbar" style="margin:6px 0">${chips.map(c=>`<button class="b ${EVF===c[0]?"":"s"}" data-evf="${c[0]}">${c[1]} (${c[2]})</button>`).join("")}</div>`+
+  `<p class="sub">Giỗ của thành viên, giỗ tổ / lễ của dòng họ và sinh nhật trong 12 tháng tới. Khung vàng là trong vòng 7 ngày.</p>`+
+  (A.length?rows:`<div class="emp">${emp[EVF]}</div>`);
+ if(!EVF||EVF==="bd"){
+  const Y0=new Date().getFullYear(),TN={60:"Lục tuần",70:"Thất tuần",80:"Bát tuần",90:"Cửu tuần",100:"Bách niên"},TH=M.filter(p=>!p.death&&p.birth&&p.birth.y&&TN[Y0-p.birth.y+1]);
+  if(TH.length)h+=`<h3>🎂 Mừng thọ năm ${Y0}</h3><p class="sub">Tính theo tuổi ta (năm nay − năm sinh + 1).</p>`+TH.map(p=>`<div class="ev" data-e="${p.id}"><div style="flex:1"><b>${esc(p.name)}</b><div class="sub">${TN[Y0-p.birth.y+1]} · tròn ${Y0-p.birth.y+1} tuổi (sinh năm ${p.birth.y})</div></div></div>`).join("")}
+ $("#t2").innerHTML=h}
+
+// ---- Thu chi (quỹ dòng họ) ----
+let FY="",FK="",FQ="";
+const mny=n=>(n<0?"−":"")+String(Math.abs(Math.round(n))).replace(/\B(?=(\d{3})+(?!\d))/g,".")+" đ";
+const fsum=a=>a.reduce((s,x)=>s+x.amt,0),parseAmt=s=>+String(s).replace(/\D/g,"")||0;
+const CAT={thu:["Đóng góp quỹ họ","Công đức / ủng hộ","Số dư đầu kỳ","Lãi, thu khác"],chi:["Giỗ Tổ họ","Tu sửa nhà thờ họ","Hương hoa, lễ vật","Tảo mộ","Hiếu hỉ (thăm hỏi, phúng viếng)","Khuyến học, khen thưởng","Chi phí khác"]};
+function todayS(){const t=new Date(),z=n=>String(n).padStart(2,"0");return t.getFullYear()+"-"+z(t.getMonth()+1)+"-"+z(t.getDate())}
+function renderFin(){
+ const ys=[...new Set(F.map(x=>x.d.slice(0,4)))].sort().reverse();if(FY&&!ys.includes(FY))FY="";
+ $("#fy").innerHTML=`<option value="">Tất cả các năm</option>`+ys.map(y=>`<option value="${y}"${y===FY?" selected":""}>Năm ${y}</option>`).join("");$("#fk").value=FK;
+ const per=FY?F.filter(x=>x.d.startsWith(FY)):F,thu=fsum(per.filter(x=>x.t==="thu")),chi=fsum(per.filter(x=>x.t==="chi")),bal=fsum(F.filter(x=>x.t==="thu"))-fsum(F.filter(x=>x.t==="chi")),lb=FY?"năm "+FY:"tất cả";
+ $("#fsum").innerHTML=`<div class="sg f"><div><b style="color:${bal<0?"var(--dn)":"var(--tx)"}">${mny(bal)}</b><span class="sub">Quỹ hiện có</span></div><div><b>${per.length}</b><span class="sub">Số khoản (${lb})</span></div><div><b style="color:var(--up)">${mny(thu)}</b><span class="sub">Tổng thu (${lb})</span></div><div><b style="color:var(--dn)">${mny(chi)}</b><span class="sub">Tổng chi (${lb})</span></div></div>`;
+ const q=nz(FQ.trim()),L=per.filter(x=>(!FK||x.t===FK)&&(!q||nz([x.cat,x.who,x.ev,x.note].join(" ")).includes(q))).sort((a,b)=>b.d.localeCompare(a.d));let last="";
+ $("#flist").innerHTML=L.length?L.map(x=>{const mk=x.d.slice(5,7)+"/"+x.d.slice(0,4),h=mk!==last?`<div class="mh">Tháng ${+x.d.slice(5,7)}/${x.d.slice(0,4)}</div>`:"";last=mk;
+  return h+`<div class="ev" data-f="${x.id}"><div class="dt"><b>${x.d.slice(8)}/${x.d.slice(5,7)}</b>${x.d.slice(0,4)}</div><div style="flex:1"><div><span class="tag ${x.t==="thu"?"up":"dn"}">${x.t==="thu"?"Thu":"Chi"}</span> <b>${esc(x.cat||"Khác")}</b></div><div class="sub">${esc([x.who,x.ev,x.note].filter(Boolean).join(" · "))}</div></div><div class="am" style="color:var(--${x.t==="thu"?"up":"dn"})">${x.t==="thu"?"+":"−"}${mny(x.amt)}</div></div>`}).join(""):`<div class="emp">${F.length?"Không có khoản nào phù hợp.":"Chưa có khoản thu chi nào.<br>Bấm <b>＋ Khoản thu</b> hoặc <b>－ Khoản chi</b> để ghi sổ."}</div>`}
+function openFin(id,type){
+ const v=id?F.find(x=>x.id===id):{t:type||"thu",d:todayS(),amt:0,cat:"",who:"",ev:"",note:""};if(!v)return;
+ const cats=t=>[...new Set([...CAT[t],...F.filter(x=>x.t===t&&x.cat).map(x=>x.cat)])];
+ $("#sh").innerHTML=`<h3 style="margin:0 0 4px">${id?"Sửa khoản":"Ghi khoản"} thu / chi</h3>
+ <label>Loại</label><select id="tcT"><option value="thu"${v.t==="thu"?" selected":""}>Thu (tiền vào quỹ)</option><option value="chi"${v.t==="chi"?" selected":""}>Chi (tiền ra)</option></select>
+ <label>Ngày</label><input type="date" id="tcD" value="${esc(v.d)}">
+ <label>Số tiền (đồng)</label><input id="tcA" inputmode="numeric" placeholder="Ví dụ: 500000" value="${v.amt||""}"><div class="sub" id="tcM"></div>
+ <label>Hạng mục</label><input id="tcC" list="tcCl" value="${esc(v.cat)}"><datalist id="tcCl"></datalist>
+ <label id="tcWl"></label><input id="tcW" list="tcWd" value="${esc(v.who)}"><datalist id="tcWd">${M.map(p=>`<option value="${esc(p.name)}">`).join("")}</datalist>
+ <label>Liên quan đến sự kiện (nếu có)</label><input id="tcE" list="tcEd" placeholder="Ví dụ: Giỗ Tổ họ" value="${esc(v.ev)}"><datalist id="tcEd">${C.ev.map(x=>`<option value="${esc(x.name)}">`).join("")}</datalist>
+ <label>Ghi chú</label><textarea id="tcN" style="min-height:70px;font:inherit">${esc(v.note)}</textarea>
+ <div style="margin-top:12px"><button class="b" id="tcok">Lưu</button><button class="b s" id="tcno">Đóng</button>${id?`<button class="b d" id="tcdel">Xóa</button>`:""}</div>`;
+ $("#ov").classList.add("on");
+ const upd=()=>{const t=$("#tcT").value;$("#tcCl").innerHTML=cats(t).map(c=>`<option value="${esc(c)}">`).join("");$("#tcWl").textContent=t==="thu"?"Người đóng góp":"Chi cho / người nhận"},
+  mm=()=>{const a=parseAmt($("#tcA").value);$("#tcM").textContent=a?mny(a):""};
+ upd();mm();$("#tcT").onchange=upd;$("#tcA").oninput=mm;$("#tcno").onclick=closeForm;
+ $("#tcok").onclick=()=>{const amt=parseAmt($("#tcA").value),d=$("#tcD").value;if(!amt){alert("Hãy nhập số tiền.");$("#tcA").focus();return}if(!d){alert("Hãy chọn ngày.");return}
+  const o={t:$("#tcT").value,d,amt,cat:$("#tcC").value.trim(),who:$("#tcW").value.trim(),ev:$("#tcE").value.trim(),note:$("#tcN").value.trim()};
+  if(id)Object.assign(v,o);else F.push({id:uid(),...o});saveFin();closeForm();render()};
+ if($("#tcdel"))$("#tcdel").onclick=()=>{if(!confirm("Xóa khoản này?"))return;F=F.filter(x=>x.id!==id);saveFin();closeForm();render()}}
+function finStats(per){const g=(t,k)=>{const m={};per.filter(x=>x.t===t).forEach(x=>{const n=(x[k]||"").trim()||(k==="cat"?"Khác":"");if(n)m[n]=(m[n]||0)+x.amt});return Object.entries(m).sort((a,b)=>b[1]-a[1])};
+ return{thu:fsum(per.filter(x=>x.t==="thu")),chi:fsum(per.filter(x=>x.t==="chi")),tc:g("thu","cat"),cc:g("chi","cat"),who:g("thu","who")}}
+function openFinReport(){
+ const per=FY?F.filter(x=>x.d.startsWith(FY)):F,s=finStats(per),lb=FY?"năm "+FY:"tất cả các năm",
+  open=FY?fsum(F.filter(x=>x.d<FY+"-01-01"&&x.t==="thu"))-fsum(F.filter(x=>x.d<FY+"-01-01"&&x.t==="chi")):0,close=open+s.thu-s.chi,
+  sec=(t,a)=>a.length?`<label>${t}</label>`+a.map(x=>`<div class="r" style="margin:2px 0"><div class="w">${esc(x[0])}</div><div style="text-align:right"><b>${mny(x[1])}</b></div></div>`).join(""):"",
+  txt=()=>{const l=a=>a.map(x=>"- "+x[0]+": "+mny(x[1])).join("\n");
+   return["BÁO CÁO THU CHI — "+famTitle()+" ("+lb+")",FY?"Số dư đầu năm: "+mny(open):"","Tổng thu: "+mny(s.thu),"Tổng chi: "+mny(s.chi),FY?"Số dư cuối năm: "+mny(close):"Quỹ hiện có: "+mny(s.thu-s.chi),
+    s.tc.length?"\nThu theo hạng mục:\n"+l(s.tc):"",s.cc.length?"\nChi theo hạng mục:\n"+l(s.cc):"",s.who.length?"\nDanh sách đóng góp:\n"+l(s.who):""].filter(Boolean).join("\n")};
+ $("#sh").innerHTML=`<h3 style="margin:0 0 4px">📊 Báo cáo thu chi · ${lb}</h3><div class="sg f">${FY?`<div><b>${mny(open)}</b><span class="sub">Số dư đầu năm</span></div>`:""}<div><b style="color:var(--up)">${mny(s.thu)}</b><span class="sub">Tổng thu</span></div><div><b style="color:var(--dn)">${mny(s.chi)}</b><span class="sub">Tổng chi</span></div><div><b>${mny(FY?close:s.thu-s.chi)}</b><span class="sub">${FY?"Số dư cuối năm":"Quỹ hiện có"}</span></div></div>`+
+  sec("Thu theo hạng mục",s.tc)+sec("Chi theo hạng mục",s.cc)+sec("Danh sách đóng góp",s.who)+(per.length?"":`<div class="emp">Chưa có khoản nào.</div>`)+
+  `<div style="margin-top:12px"><button class="b" id="frs">📤 Chia sẻ báo cáo</button><button class="b s" id="frc">⬇ Xuất CSV</button><button class="b s" id="nos">Đóng</button></div>`;
+ $("#ov").classList.add("on");$("#nos").onclick=closeForm;$("#frs").onclick=()=>shareText(txt());
+ $("#frc").onclick=async()=>{const q=v=>'"'+String(v==null?"":v).replace(/"/g,'""')+'"',R=[["Ngày","Loại","Hạng mục","Số tiền","Người đóng góp / nhận","Sự kiện","Ghi chú"],...[...per].sort((a,b)=>a.d.localeCompare(b.d)).map(x=>[x.d.split("-").reverse().join("/"),x.t==="thu"?"Thu":"Chi",x.cat,x.amt,x.who,x.ev,x.note])];
+  try{await saveFile("so-thu-chi"+(FY?"-"+FY:"")+".csv",new Blob(["\ufeff"+R.map(r=>r.map(q).join(",")).join("\r\n")],{type:"text/csv;charset=utf-8"}))}catch(e){alert("Không xuất được file CSV.")}}}
+$("#fy").onchange=e=>{FY=e.target.value;renderFin()};$("#fk").onchange=e=>{FK=e.target.value;renderFin()};$("#fq").oninput=e=>{FQ=e.target.value;renderFin()};
+
+// ---- Ảnh lưu niệm (IndexedDB, không giới hạn như localStorage) ----
+let DB=null,PHE=0,PA="";
+function dbo(){return new Promise((res,rej)=>{if(DB)return res(DB);let r;try{r=indexedDB.open("giapha_db",1)}catch(e){return rej(e)}
+ r.onupgradeneeded=()=>{r.result.createObjectStore("photos",{keyPath:"id"});r.result.createObjectStore("full",{keyPath:"id"})};
+ r.onsuccess=()=>{DB=r.result;res(DB)};r.onerror=()=>rej(r.error)})}
+function dbt(names,mode,fn){return dbo().then(db=>new Promise((res,rej)=>{const t=db.transaction(names,mode);let q;try{q=fn(...names.map(n=>t.objectStore(n)))}catch(e){rej(e);return}t.oncomplete=()=>res(q&&q.result);t.onerror=t.onabort=()=>rej(t.error)}))}
+async function loadPh(){try{PH=(await dbt(["photos"],"readonly",s=>s.getAll()))||[]}catch(e){PHE=1;PH=[]}renderAlbum()}
+function loadSrc(u){return new Promise((res,rej)=>{const im=new Image();im.onload=()=>res(im);im.onerror=rej;im.src=u})}
+function loadImg(f){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>loadSrc(r.result).then(res,rej);r.onerror=rej;r.readAsDataURL(f)})}
+function scale(im,max,q){const k=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.max(1,Math.round(im.width*k));c.height=Math.max(1,Math.round(im.height*k));c.getContext("2d").drawImage(im,0,0,c.width,c.height);return c.toDataURL("image/jpeg",q)}
+function d2b(u){const p=u.split(","),bin=atob(p[1]),a=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)a[i]=bin.charCodeAt(i);return new Blob([a],{type:"image/jpeg"})}
+const albums=()=>[...new Set([...PH.map(p=>p.album).filter(Boolean),...C.ev.map(x=>x.name)])].sort((a,b)=>a.localeCompare(b,"vi"));
+function renderAlbum(){
+ const al=[...new Set(PH.map(p=>p.album).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"vi"));if(PA&&!al.includes(PA))PA="";
+ $("#pa").innerHTML=`<option value="">Tất cả album (${PH.length} ảnh)</option>`+al.map(a=>`<option value="${esc(a)}"${a===PA?" selected":""}>${esc(a)} (${PH.filter(p=>p.album===a).length})</option>`).join("");
+ if(PHE){PLO=[];$("#plist").innerHTML=`<div class="emp">Trình duyệt này không cho phép lưu ảnh (không dùng được IndexedDB).</div>`;return}
+ const L=(PA?PH.filter(p=>p.album===PA):PH).slice().sort((a,b)=>b.ts-a.ts);PLO=L.map(p=>p.id);
+ if(!L.length){$("#plist").innerHTML=`<div class="emp">Chưa có ảnh lưu niệm nào.<br>Bấm <b>＋ Thêm ảnh</b> để lưu ảnh giỗ tổ, họp họ, tảo mộ…</div>`;return}
+ const g={};L.forEach(p=>{const k=p.album||"Chưa phân loại";(g[k]=g[k]||[]).push(p)});
+ $("#plist").innerHTML=Object.entries(g).map(([k,a])=>`<div class="mh">${esc(k)} · ${a.length} ảnh</div><div class="pg">${a.map(p=>`<div data-p="${p.id}" style="background-image:url('${p.th}')">${p.title?`<span>${esc(p.title)}</span>`:""}</div>`).join("")}</div>`).join("")}
+function openAddPhoto(){
+ $("#sh").innerHTML=`<h3 style="margin:0 0 4px">Thêm ảnh lưu niệm</h3>
+ <label>Album / sự kiện</label><input id="pal" list="pall" placeholder="Ví dụ: Giỗ Tổ họ 2026" value="${esc(PA)}"><datalist id="pall">${albums().map(a=>`<option value="${esc(a)}">`).join("")}</datalist>
+ <label>Thời gian</label><input id="pdt" placeholder="Ví dụ: 10/3 Âm lịch 2026">
+ <label>Ghi chú chung cho các ảnh</label><textarea id="pcp" style="min-height:60px;font:inherit"></textarea>
+ <label>Chọn ảnh (được chọn nhiều ảnh)</label><input type="file" id="pfl" accept="image/*" multiple>
+ <div class="sub" id="pms"></div>
+ <div style="margin-top:12px"><button class="b" id="pok">Lưu ảnh</button><button class="b s" id="pno">Đóng</button></div>`;
+ $("#ov").classList.add("on");$("#pno").onclick=closeForm;
+ $("#pok").onclick=async()=>{const fs=[...$("#pfl").files];if(!fs.length){$("#pms").textContent="Hãy chọn ít nhất một ảnh.";return}
+  const al=$("#pal").value.trim(),dt=$("#pdt").value.trim(),cp=$("#pcp").value.trim();$("#pok").disabled=true;let ok=0;
+  for(let i=0;i<fs.length;i++){$("#pms").textContent="Đang lưu ảnh "+(i+1)+"/"+fs.length+"…";
+   try{const im=await loadImg(fs[i]),id="p"+Date.now().toString(36)+Math.random().toString(36).slice(2,6),m={id,album:al,title:"",date:dt,cap:cp,ts:Date.now()+i,th:scale(im,360,.7)},full=scale(im,1280,.78);
+    await dbt(["photos","full"],"readwrite",(a,b)=>{a.put(m);return b.put({id,data:full})});PH.push(m);ok++}catch(e){}}
+  closeForm();renderAlbum();if(ok<fs.length)alert("Không lưu được "+(fs.length-ok)+" ảnh (file không đọc được hoặc bộ nhớ đã đầy).")}}
+async function openPhoto(id){
+ const m=PH.find(p=>p.id===id);if(!m)return;let full=m.th;
+ try{const r=await dbt(["full"],"readonly",s=>s.get(id));if(r&&r.data)full=r.data}catch(e){}
+ const ix=PLO.indexOf(id),pv=PLO[ix-1],nx=PLO[ix+1];
+ $("#sh").innerHTML=`<img src="${full}" alt="" style="width:100%;border-radius:10px;display:block">
+ <div class="r" style="margin:8px 0;align-items:center"><button class="b s" ${pv?`data-p="${pv}"`:"disabled"} style="margin:0">‹ Trước</button><div class="sub" style="flex:.5;text-align:center">${ix+1} / ${PLO.length}</div><button class="b s" ${nx?`data-p="${nx}"`:"disabled"} style="margin:0">Sau ›</button></div>
+ <label>Tiêu đề</label><input id="pti" value="${esc(m.title)}">
+ <label>Album / sự kiện</label><input id="pal" list="pall" value="${esc(m.album)}"><datalist id="pall">${albums().map(a=>`<option value="${esc(a)}">`).join("")}</datalist>
+ <label>Thời gian</label><input id="pdt" value="${esc(m.date)}">
+ <label>Ghi chú</label><textarea id="pcp" style="min-height:60px;font:inherit">${esc(m.cap)}</textarea>
+ <div style="margin-top:12px"><button class="b" id="psv">Lưu</button><button class="b s" id="psh">📤 Gửi ảnh</button><button class="b d" id="pdl">Xóa</button><button class="b s" id="pno">Đóng</button></div>`;
+ $("#ov").classList.add("on");$("#pno").onclick=closeForm;
+ $("#psv").onclick=async()=>{Object.assign(m,{title:$("#pti").value.trim(),album:$("#pal").value.trim(),date:$("#pdt").value.trim(),cap:$("#pcp").value.trim()});
+  try{await dbt(["photos"],"readwrite",s=>s.put(m))}catch(e){alert("Không lưu được thay đổi.");return}closeForm();renderAlbum()};
+ $("#pdl").onclick=async()=>{if(!confirm("Xóa ảnh này?"))return;try{await dbt(["photos","full"],"readwrite",(a,b)=>{a.delete(id);return b.delete(id)})}catch(e){alert("Không xóa được ảnh.");return}PH=PH.filter(p=>p.id!==id);closeForm();renderAlbum()};
+ $("#psh").onclick=async()=>{const b=d2b(full),nm=(m.title||"anh-luu-niem").replace(/[^\w\u00C0-\u1EF9]+/g,"-")+".jpg";
+  try{const f=new File([b],nm,{type:"image/jpeg"});if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],text:[m.title,m.album,m.date].filter(Boolean).join(" · ")});return}}catch(e){if(e&&e.name==="AbortError")return}
+  try{await saveFile(nm,b)}catch(e){alert("Không gửi được ảnh.")}}}
+$("#pa").onchange=e=>{PA=e.target.value;renderAlbum()};
+
 // ---- Điều hướng ----
-function render(){renderRem();renderTree();renderList();nUI();renderTitle();tick()}
-document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("on",x===b));document.querySelectorAll(".tab").forEach((t,i)=>t.classList.toggle("on",i==b.dataset.t));$("#fab").style.display=b.dataset.t==="4"?"none":"block"});
-$("#fab").onclick=()=>openForm();
+function render(){renderRem();renderTree();renderList();renderFin();renderAlbum();nUI();renderTitle();tick()}
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("on",x===b));document.querySelectorAll(".tab").forEach((t,i)=>t.classList.toggle("on",i==b.dataset.t));TAB=+b.dataset.t;$("#fab").style.display=TAB===5?"none":"block";$("#fab").setAttribute("aria-label",FL[TAB]||"Thêm")});
+let TAB=0;const FL=["Thêm thành viên","Thêm thành viên","Thêm sự kiện","Thêm khoản thu chi","Thêm ảnh"];
+$("#fab").onclick=()=>{if(TAB===2)openCE();else if(TAB===3)openFin(null,"thu");else if(TAB===4)openAddPhoto();else openForm()};
 $("#q").oninput=renderList;
 $("#ov").onclick=e=>{if(e.target.id==="ov")closeForm()};
 document.addEventListener("click",e=>{
@@ -444,12 +609,19 @@ document.addEventListener("click",e=>{
  if(e.target.id==="bci"){openClan();return}
  if(e.target.id==="bcv"){openClanView();return}
  if(e.target.id==="bce"){openCE();return}
+ const ef=e.target.closest("[data-evf]");if(ef){EVF=ef.dataset.evf;renderEvents();return}
+ const ff=e.target.closest("[data-f]");if(ff){openFin(ff.dataset.f);return}
+ if(e.target.id==="bft"){openFin(null,"thu");return}
+ if(e.target.id==="bfc"){openFin(null,"chi");return}
+ if(e.target.id==="bfr"){openFinReport();return}
+ if(e.target.id==="bpa"){openAddPhoto();return}
+ const pp=e.target.closest("[data-p]");if(pp){openPhoto(pp.dataset.p);return}
  if(e.target.id==="bps"){document.body.dataset.print="t2";window.print();return}
  const ce=e.target.closest("[data-ce]");if(ce){openCE(ce.dataset.ce);return}
  if(e.target.id==="bex"||e.target.id==="bco"){const o=e.target.id==="bex";document.querySelectorAll("#t0 details").forEach(d=>d.open=o);return}
  if(e.target.id==="bst"){openStats();return}
  if(e.target.id==="bpr"){document.querySelectorAll("#t0 details").forEach(d=>d.open=true);window.print();return}
- if(e.target.id==="gobk"){document.querySelector('nav button[data-t="4"]').click();return}
+ if(e.target.id==="gobk"){document.querySelector('nav button[data-t="5"]').click();return}
  if(e.target.id==="demo"){M=[
   {id:"a1",name:"Nguyễn Văn Tổ",gender:"nam",parentId:"",spouseId:"a2",birth:{d:0,m:0,y:1900},death:{d:15,m:3,y:1975,l:true},hometown:"Nam Định",note:""},
   {id:"a2",name:"Trần Thị Mão",gender:"nu",parentId:"",spouseId:"a1",birth:{d:0,m:0,y:1905},death:{d:2,m:9,y:1980,l:true},hometown:"Nam Định",note:""},
@@ -475,7 +647,7 @@ $("#bpin").onclick=()=>{const a=prompt("Nhập mã PIN mới (4–8 chữ số):
 $("#bpin0").onclick=()=>{if(!confirm("Tắt khóa PIN?"))return;try{localStorage.removeItem("giapha_pin")}catch(e){}lockUI();setMsg("Đã tắt PIN.")};
 let _hid=0;document.addEventListener("visibilitychange",()=>{if(document.hidden)_hid=Date.now();else if(_hid&&Date.now()-_hid>30000)showLock()});
 $("#qk").onchange=renderList;lockUI();showLock();
-render();
+render();loadPh();try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
 </script>
 </body>
 </html>
